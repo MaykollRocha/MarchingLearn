@@ -1,3 +1,6 @@
+import io
+import sys
+
 import pandas as pd
 import streamlit as st
 
@@ -64,9 +67,15 @@ def main():
     df = load_data()
     st.code("""
             df.info() #Tras informações sobre o data frame
-            df.shape() #Tras o tamanho do data frame
+            df.shape() #Tras o tamanho
+            do data frame
             """,language='python')
-    st.write(df.info)
+    # Captura a saída de df.info() em um buffer de string
+    buffer = io.StringIO()
+    df.info(buf=buffer)
+    info_str = buffer.getvalue()
+    buffer.close()
+    st.write(info_str)
     st.text(df.shape)
     st.dataframe(df)
     
