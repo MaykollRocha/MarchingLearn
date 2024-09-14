@@ -55,9 +55,19 @@ def main():
     """)
     st.markdown("""
                 # Abrindo Data-Frame
-                Para demonstrar a limpeza e dar umas dicas vou abrir um data frame genérico que foi dada a min durante a matéria demostrar umas funções do padna apara limpa-lo com velocidade depois uma função apra tornar tudo nuemrico seguindo uma certa onde de classe.
-                Inciamos abrindo o data frame:
+                Para demonstrar a limpeza e dar umas dicas vou abrir um data frame genérico que foi dada a min durante a matéria demostrar umas funções do padna apara limpa-lo com velocidade depois uma função apra tornar tudo nuemrico seguindo uma certa onde de classe.  
+                Inciamos abrindo o data frame:  
+                -> ver informações do data frame   
+                -> espaço do data frames   
+                -> E plotar ele completo   
                 """)
+    df = load_data()
+    st.code("""
+            df.info() #Tras informações sobre o data frame
+            df.shape() #Tras o tamanho do data frame
+            """,language='python')
+    st.text(df.info())
+    st.text(df.shape)
     st.dataframe(load_data())
     
     st.code("""
@@ -95,6 +105,8 @@ def main():
     
     df_num = numeric_dataFrame(df_clear)
     st.dataframe(df_num)
+    
+    
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
