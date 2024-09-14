@@ -1,6 +1,3 @@
-import io
-import sys
-
 import pandas as pd
 import streamlit as st
 
@@ -104,7 +101,7 @@ def main():
             """,language='python')
     st.markdown("""## Clear data""")
     df = clear_data()
-    st.text(obter_info_df(df))
+    st.write(obter_info_df(df))
     st.text(df.shape)
     st.dataframe(df)
     st.code("""
@@ -129,7 +126,7 @@ def main():
     st.markdown("""## Tranformando o data frame em valores aprenas numericos""")
     
     df = numeric_dataFrame(df)
-    st.text(obter_info_df(df))
+    st.write(obter_info_df(df))
     st.text(df.shape)
     st.dataframe(df)
     
