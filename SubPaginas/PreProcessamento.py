@@ -68,7 +68,7 @@ def main():
             """,language='python')
     st.text(df.info())
     st.text(df.shape)
-    st.dataframe(load_data())
+    st.dataframe(df)
     
     st.code("""
             #Caso vôce precise limpar duplicatas ou valores null em coluna específica
@@ -79,7 +79,11 @@ def main():
             #Retirar colunas que são irrelevantes para a analise
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
             """,language='python')
-    
+    st.markdown("""## Clear data""")
+    df = clear_data()
+    st.text(df.info())
+    st.text(df.shape)
+    st.dataframe(df_clear)
     st.code("""
             #Em casos de sexo muitas vezes eles coloca masculino e feminimo no codigo apresentou varias formar de escrever mas todas como com a mesma letra logo
             #caso tenha uma coluna que prescise trocar masculi ou feminimo
@@ -97,14 +101,14 @@ def main():
             df['<Nome_da_coluna>'] =  df['<Nome_da_coluna>'].abs()
             """,language='python')
     
-    st.markdown("""## Clear data""")
-    df_clear = clear_data()
-    st.dataframe(df_clear)
+    
     
     st.markdown("""## Tranformando o data frame em valores aprenas numericos""")
     
-    df_num = numeric_dataFrame(df_clear)
-    st.dataframe(df_num)
+    df = numeric_dataFrame(df)
+    st.text(df.info())
+    st.text(df.shape)
+    st.dataframe(df)
     
     
     
