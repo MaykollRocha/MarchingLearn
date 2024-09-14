@@ -20,7 +20,6 @@ def obter_info_df(df):
         'Shape': df.shape,
         'Colunas': df.columns.tolist(),
         'Tipos de Dados': df.dtypes.to_dict(),
-        'Amostra de Dados': df.head().to_dict(orient='records')
     }
     return info
 
@@ -105,7 +104,7 @@ def main():
             """,language='python')
     st.markdown("""## Clear data""")
     df = clear_data()
-    st.text(df.info())
+    st.text(obter_info_df(df))
     st.text(df.shape)
     st.dataframe(df)
     st.code("""
@@ -130,7 +129,7 @@ def main():
     st.markdown("""## Tranformando o data frame em valores aprenas numericos""")
     
     df = numeric_dataFrame(df)
-    st.text(df.info())
+    st.text(obter_info_df(df))
     st.text(df.shape)
     st.dataframe(df)
     
