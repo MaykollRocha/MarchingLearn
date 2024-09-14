@@ -66,7 +66,7 @@ def main():
             df.info() #Tras informações sobre o data frame
             df.shape() #Tras o tamanho do data frame
             """,language='python')
-    st.text(df.info())
+    st.write(df.info())
     st.text(df.shape)
     st.dataframe(df)
     
