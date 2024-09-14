@@ -87,7 +87,6 @@ def main():
             """,language='python')
     # Captura a saída de df.info() em um buffer de string
     st.write(obter_info_df(df))
-    st.text(df.shape)
     st.dataframe(df)
     
     st.code("""
@@ -102,7 +101,6 @@ def main():
     st.markdown("""## Clear data""")
     df = clear_data()
     st.write(obter_info_df(df))
-    st.text(df.shape)
     st.dataframe(df)
     st.code("""
             #Em casos de sexo muitas vezes eles coloca masculino e feminimo no codigo apresentou varias formar de escrever mas todas como com a mesma letra logo
@@ -127,7 +125,6 @@ def main():
     
     df = numeric_dataFrame(df)
     st.write(obter_info_df(df))
-    st.text(df.shape)
     st.dataframe(df)
     
     
