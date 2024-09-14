@@ -1,73 +1,6 @@
 
-from io import BytesIO
-
-import altair as alt
-import pandas as pd
-import requests
 import streamlit as st
 
-
-def load_data():
-    # URL do arquivo Excel
-    url = "https://github.com/MaykollRocha/Data_Sets/raw/main/Funcionarios%20(2).xlsx"
-
-    # Baixar o arquivo
-    response = requests.get(url)
-
-    # Verificar se o download foi bem-sucedido
-    if response.status_code == 200:
-        # Ler o arquivo Excel usando BytesIO
-        file_content = BytesIO(response.content)
-        df = pd.read_excel(file_content)
-    else:
-        print(f"Falha ao baixar o arquivo: {response.status_code}")
-    return df
-
-
-df = load_data()
-
-# Show a multiselect widget with the genres using `st.multiselect`.
-genres = st.multiselect(
-    "Genres",
-    df.genre.unique(),
-    ["Action", "Adventure", "Biography", "Comedy", "Drama", "Horror"],
-)
-
-# Show a slider widget with the years using `st.slider`.
-years = st.slider("Years", 1986, 2006, (2000, 2016))
-
-# Filter the dataframe based on the widget input and reshape it.
-df_filtered = df[(df["genre"].isin(genres)) & (df["year"].between(years[0], years[1]))]
-df_reshaped = df_filtered.pivot_table(
-    index="year", columns="genre", values="gross", aggfunc="sum", fill_value=0
-)
-df_reshaped = df_reshaped.sort_values(by="year", ascending=False)
-
-
-# Display the data as a table using `st.dataframe`.
-st.dataframe(
-    df_reshaped,
-    use_container_width=True,
-    column_config={"year": st.column_config.TextColumn("Year")},
-)
-
-# Display the data as an Altair chart using `st.altair_chart`.
-df_chart = pd.melt(
-    df_reshaped.reset_index(), id_vars="year", var_name="genre", value_name="gross"
-)
-chart = (
-    alt.Chart(df_chart)
-    .mark_line()
-    .encode(
-        x=alt.X("year:N", title="Year"),
-        y=alt.Y("gross:Q", title="Gross earnings ($)"),
-        color="genre:N",
-    )
-    .properties(height=320)
-)
-
-def Metricas():
-    pass
 
 def main():
     st.title('Pré-processamento de Dados')
@@ -92,9 +25,6 @@ def main():
     3. **Engenharia de características (Feature Engineering)**:  
     Criação ou seleção de características relevantes para melhorar o desempenho do modelo. Isso pode incluir transformar variáveis categóricas em numéricas, combinar variáveis existentes ou criar novas variáveis a partir dos dados disponíveis.
     """)
-    
-    st.altair_chart(chart, use_container_width=True)
-
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'

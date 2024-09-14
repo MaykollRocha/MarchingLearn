@@ -1,9 +1,6 @@
 import streamlit as st
 
 
-def Metricas():
-    pass
-
 def main():
     # Streamlit UI
     st.title('Metricas')
