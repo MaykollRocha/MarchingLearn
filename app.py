@@ -21,12 +21,6 @@ def main_page():
     if st.button('Pré Processamento'):
         st.session_state.page = 'preProcessamento'
     
-    st.markdown("""
-            ### Pré-processamento dos Dados
-            Uma etapa crucial após obter os dados é processá-los corretamente. Muitas vezes, utilizam-se mecanismos de ETL (Extração, Transformação e Carregamento) para preparar os dados de forma adequada para o negócio ou aplicação desejada. No entanto, durante esse processo, erros inesperados podem ocorrer, uma vez que o ETL não foca necessariamente na limpeza dos dados. É comum que, após essa etapa, ainda haja duplicatas, valores inconsistentes ou variáveis que precisam ser ajustadas, como a necessidade de normalização e padronização.  
-            Por isso, o pré-processamento torna-se essencial para garantir que os dados estejam limpos e prontos para o uso em modelos de Machine Learning ou outras análises. Na próxima seção, abordaremos essas etapas detalhadamente.  
-            """)
-    
     if st.button('Metricas'):
         st.session_state.page = 'Metricas'
             
