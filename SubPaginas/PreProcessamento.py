@@ -127,6 +127,7 @@ def main():
     st.write(obter_info_df(df))
     st.dataframe(df)
     
+    st.markdown("""Apartir daqui já temos um data set totalmente numerico sem que pode passar por normalizações de dados para futuro tabalho com eles.  """)
     
     
     if st.button('Voltar para a página principal'):
