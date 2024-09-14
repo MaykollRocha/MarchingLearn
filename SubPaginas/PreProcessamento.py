@@ -1,7 +1,21 @@
 
+from io import BytesIO
+
+import pandas as pd
+import requests
 import streamlit as st
 
 
+def load_data():
+    # Baixar o arquivo
+    response = requests.get("https://github.com/MaykollRocha/Data_Sets/raw/main/Funcionarios%20(2).xlsx")
+
+    # Verificar se o download foi bem-sucedido
+    if response.status_code == 200:
+        # Ler o arquivo Excel usando BytesIO
+        file_content = BytesIO(response.content)
+        df = pd.read_excel(file_content, engine='openpyxl')
+        return df
 def main():
     st.title('Pré-processamento de Dados')
     
@@ -24,8 +38,15 @@ def main():
   
     3. **Transformação de dados**:  
     Ajuste dos dados por meio de normalização ou padronização, dependendo do algoritmo escolhido. A transformação garante que os dados estejam na mesma escala ou formato, facilitando a convergência do modelo e o processamento eficiente.
-    
     """)
+    st.markdown("""
+                # Abrindo Data-Frame
+                Para demonstrar a limpeza e dar umas dicas vou abrir um data frame genérico que foi dada a min durante a matéria demostrar umas funções do padna apara limpa-lo com velocidade depois uma função apra tornar tudo nuemrico seguindo uma certa onde de classe.
+                Inciamos abrindo o data frame:
+                """)
+    st.dataframe(load_data())
+    
+    
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
