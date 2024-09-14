@@ -8,6 +8,13 @@ def load_data():
     
     return df
 
+def numeric_dataFrame(df):
+    #caso tenha uma coluna que prescise trocar masculi ou feminimo
+    df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
+    df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
+    #Ele categoriza em ordem alfabética categorias = df['coluna'].cat.categories
+    df['cargo'] = pd.Categorical(df['cargo']).codes
+    return df
 def clear_data():
     dfPoor = load_data()
     #Retirar o dado igual a nutnull pois a dados que não tem como estimar facilmente
@@ -19,13 +26,8 @@ def clear_data():
     #caso algum dado de alguma coluna numerica esteja none use essa função ela preenche com moda desse gráfico
     df['num_filhos'] = df['num_filhos'].fillna(df['num_filhos'].mode()[0]) # Substituir valores None pela moda
     
-    #caso tenha uma coluna que prescise trocar masculi ou feminimo
-    df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
-    df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
-    #Ele categoriza em ordem alfabética categorias = df['coluna'].cat.categories
-    df['cargo'] = pd.Categorical(df['cargo']).codes
-    
     return df
+
 def main():
     st.title('Pré-processamento de Dados')
     
@@ -80,6 +82,9 @@ def main():
     st.markdown("""## Clear data""")
     df_clear = clear_data()
     st.dataframe(df_clear)
+    st.markdown("""## Tranformando o data frame em valores aprenas numericos""")
+    df_num = numeric_dataFrame(df_clear)
+    st.dataframe(df_num)
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
