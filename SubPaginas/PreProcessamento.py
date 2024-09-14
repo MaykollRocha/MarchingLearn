@@ -4,7 +4,7 @@ import streamlit as st
 
 def load_data():
     # Caminho para o arquivo Excel
-    file_path = "data/Funcionarios (2).xlsx"
+    file_path = "data/Funcionarios.csv"
     
     # Ler o arquivo Excel usando pandas
     df = pd.read_excel(file_path)  # 'openpyxl' é recomendado para arquivos .xlsx
