@@ -63,8 +63,8 @@ def main():
             #Retirar colunas que são irrelevantes para a analise
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
             
-            """)
-    st.markdown("""## Clear data""",language='python')
+            """,language='python')
+    st.markdown("""## Clear data""")
     st.dataframe(clear_data())
     
     if st.button('Voltar para a página principal'):
