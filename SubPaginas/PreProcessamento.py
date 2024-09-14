@@ -15,7 +15,7 @@ def numeric_dataFrame(df):
     #Ele categoriza em ordem alfabética categorias = df['coluna'].cat.categories
     df['cargo'] = pd.Categorical(df['cargo']).codes
     #Tranformar em valores positivos
-     df['num_filhos'] =  df['num_filhos'].abs()
+    df['num_filhos'] =  df['num_filhos'].abs()
     return df
 def clear_data():
     dfPoor = load_data()
@@ -59,6 +59,7 @@ def main():
                 Inciamos abrindo o data frame:
                 """)
     st.dataframe(load_data())
+    
     st.code("""
             #Caso vôce precise limpar duplicatas ou valores null em coluna específica
             #Retirar o dado igual a nutnull pois a dados que não tem como estimar facilmente
@@ -67,7 +68,9 @@ def main():
             df = df[df.duplicated() == False]
             #Retirar colunas que são irrelevantes para a analise
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
-            
+            """,language='python')
+    
+    st.code("""
             #Em casos de sexo muitas vezes eles coloca masculino e feminimo no codigo apresentou varias formar de escrever mas todas como com a mesma letra logo
             #caso tenha uma coluna que prescise trocar masculi ou feminimo
             df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
@@ -80,7 +83,10 @@ def main():
             
             #Ele categoriza em ordem alfabética categorias = df['<Nome_da_coluna>'].cat.categories
             df['<Nome_da_coluna>'] = pd.Categorical(df['<Nome_da_coluna>']).codes
+             #Tranformar em valores positivos
+            df['<Nome_da_coluna>'] =  df['<Nome_da_coluna>'].abs()
             """,language='python')
+    
     st.markdown("""## Clear data""")
     df_clear = clear_data()
     st.dataframe(df_clear)
