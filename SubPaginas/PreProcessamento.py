@@ -7,7 +7,7 @@ def load_data():
     file_path = "data/Funcionarios (2).xlsx"
     
     # Ler o arquivo Excel usando pandas
-    df = pd.read_excel(file_path, engine='openpyxl')  # 'openpyxl' é recomendado para arquivos .xlsx
+    df = pd.read_excel(file_path)  # 'openpyxl' é recomendado para arquivos .xlsx
     
     return df
 def main():
