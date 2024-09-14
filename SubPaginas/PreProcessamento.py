@@ -64,7 +64,7 @@ def main():
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
             
             """)
-    st.markdown("""## Clear data""")
+    st.markdown("""## Clear data""",language='python')
     st.dataframe(clear_data())
     
     if st.button('Voltar para a página principal'):
