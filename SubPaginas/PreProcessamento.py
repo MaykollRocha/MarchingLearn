@@ -24,6 +24,7 @@ def main():
   
     3. **Transformação de dados**:  
     Ajuste dos dados por meio de normalização ou padronização, dependendo do algoritmo escolhido. A transformação garante que os dados estejam na mesma escala ou formato, facilitando a convergência do modelo e o processamento eficiente.
+    
     """)
     
     if st.button('Voltar para a página principal'):
