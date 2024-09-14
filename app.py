@@ -27,7 +27,7 @@ if 'page' not in st.session_state:
 # Controle de navegação
 if st.session_state.page == 'main':
     main_page()
-elif st.session_state.page == 'nrz':
+elif st.session_state.page == 'Metricas':
     Metricas()
 else:
     main_page()

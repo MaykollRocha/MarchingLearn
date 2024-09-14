@@ -6,7 +6,7 @@ def Metricas():
 
 def main():
     # Streamlit UI
-    st.title('Matricas')
+    st.title('Metricas')
     st.markdown("""
                 Comentar sobre as métricas de avaliação de um código.
                 """)
