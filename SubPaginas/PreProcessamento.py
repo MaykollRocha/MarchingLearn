@@ -57,9 +57,9 @@ def main():
     st.code("""
             #Caso vôce precise limpar duplicatas ou valores null em coluna específica
             #Retirar o dado igual a nutnull pois a dados que não tem como estimar facilmente
-            df = dfPoor[dfPoor['<Nome_da_coluna>'<caso queria por mais colunas ,'<Nome_da_coluna2>',...>].notnull()]
+            df = df[df['<Nome_da_coluna>'<caso queria por mais colunas ,'<Nome_da_coluna2>',...>].notnull()]
             #Retirando duplicatas
-            df = df[dfPoor.duplicated() == False]
+            df = df[df.duplicated() == False]
             #Retirar colunas que são irrelevantes para a analise
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
             
