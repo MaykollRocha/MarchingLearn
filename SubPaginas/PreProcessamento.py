@@ -22,7 +22,11 @@ def clear_data():
     #caso tenha uma coluna que prescise trocar masculi ou feminimo
     df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
     df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
+    #Ele categoriza em ordem alfabética categorias = df['coluna'].cat.categories
+    catego =  pd.Categorical(df['cargo'])
+    st.text(catego)
     df['cargo'] = pd.Categorical(df['cargo']).codes
+    
     return df
 def main():
     st.title('Pré-processamento de Dados')
