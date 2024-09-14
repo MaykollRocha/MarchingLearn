@@ -63,6 +63,12 @@ def main():
             #Retirar colunas que são irrelevantes para a analise
             df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
             
+            #Em casos de sexo muitas vezes eles coloca masculino e feminimo no codigo apresentou varias formar de escrever mas todas como com a mesma letra logo
+            #caso tenha uma coluna que prescise trocar masculi ou feminimo
+            df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
+            #Esse proximo é para estado civil
+            df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
+            
             """,language='python')
     st.markdown("""## Clear data""")
     st.dataframe(clear_data())
