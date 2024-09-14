@@ -2,17 +2,7 @@ import streamlit as st
 
 from SubPaginas.Metricas import main as Metricas
 
-st.set_page_config(page_title="Maykoll Rocha - Portifolio Pessoal",
-    page_icon=None ,
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
 
-st.text("""
-        
-        """)
-        
-        
 def main_page():
     st.title("Maykoll Rocha - Tópicos em Aprendizagem de Máquina")
     st.markdown("""
@@ -31,6 +21,8 @@ def main_page():
 # Defina o estado da página se não estiver definido
 if 'page' not in st.session_state:
     st.session_state.page = 'main'
+
+
 
 # Controle de navegação
 if st.session_state.page == 'main':
