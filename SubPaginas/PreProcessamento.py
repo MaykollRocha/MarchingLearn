@@ -5,6 +5,25 @@ import pandas as pd
 import streamlit as st
 
 
+def obter_info_df(df):
+    """
+    Recebe um DataFrame e retorna um dicionário com informações sobre o DataFrame,
+    incluindo shape, amostra dos dados e tipos de dados das colunas.
+    
+    Args:
+        df (pd.DataFrame): O DataFrame para análise.
+        
+    Returns:
+        dict: Um dicionário com informações sobre o DataFrame.
+    """
+    info = {
+        'Shape': df.shape,
+        'Colunas': df.columns.tolist(),
+        'Tipos de Dados': df.dtypes.to_dict(),
+        'Amostra de Dados': df.head().to_dict(orient='records')
+    }
+    return info
+
 def load_data():
 
     df = pd.read_csv("data/Funcionarios.csv") 
@@ -71,11 +90,7 @@ def main():
             do data frame
             """,language='python')
     # Captura a saída de df.info() em um buffer de string
-    buffer = io.StringIO()
-    df.info(buf=buffer)
-    info_str = buffer.getvalue()
-    buffer.close()
-    st.write(info_str)
+    st.write(obter_info_df(df))
     st.text(df.shape)
     st.dataframe(df)
     
