@@ -7,6 +7,17 @@ def load_data():
     df = pd.read_csv("data/Funcionarios.csv") 
     
     return df
+
+def clear_data():
+    dfPoor = load_data()
+    #Retirar o dado igual a nutnull pois a dados que não tem como estimar facilmente
+    df = dfPoor[dfPoor['cargo'].notnull()]
+    #Retirando duplicatas
+    df = df[dfPoor.duplicated() == False]
+    #Retirar colunas que são irrelevantes para a analise
+    df = df.drop(columns=['matricula','nome'])
+    
+    return df
 def main():
     st.title('Pré-processamento de Dados')
     
@@ -36,8 +47,8 @@ def main():
                 Inciamos abrindo o data frame:
                 """)
     st.dataframe(load_data())
-    
-    
+    st.markdown("""## Clear data""")
+    st.dataframe(clear_data())
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
