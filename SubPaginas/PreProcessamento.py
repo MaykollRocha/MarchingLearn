@@ -16,6 +16,13 @@ def clear_data():
     df = df[dfPoor.duplicated() == False]
     #Retirar colunas que são irrelevantes para a analise
     df = df.drop(columns=['matricula','nome'])
+    #caso algum dado de alguma coluna numerica esteja none use essa função ela preenche com moda desse gráfico
+    moda = df['num_filhos'].mode()[0]  # mode() retorna uma série, e [0] acessa o valor
+    df['num_filhos'] = df['num_filhos'].fillna(moda) # Substituir valores None pela moda
+    
+    #caso tenha uma coluna que prescise trocar masculi ou feminimo
+    df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
+    df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
     
     return df
 def main():
