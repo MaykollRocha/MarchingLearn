@@ -7,8 +7,12 @@ import streamlit as st
 
 
 def load_data():
-    # Ler o arquivo CSV usando pandas
-    df = pd.read_csv("data\Funcionarios (2).xlsx")
+    # Caminho para o arquivo Excel
+    file_path = "data/Funcionarios (2).xlsx"
+    
+    # Ler o arquivo Excel usando pandas
+    df = pd.read_excel(file_path, engine='openpyxl')  # 'openpyxl' é recomendado para arquivos .xlsx
+    
     return df
 def main():
     st.title('Pré-processamento de Dados')
