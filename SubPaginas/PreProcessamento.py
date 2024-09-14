@@ -54,6 +54,16 @@ def main():
                 Inciamos abrindo o data frame:
                 """)
     st.dataframe(load_data())
+    st.code("""
+            #Caso vôce precise limpar duplicatas ou valores null em coluna específica
+            #Retirar o dado igual a nutnull pois a dados que não tem como estimar facilmente
+            df = dfPoor[dfPoor['<Nome_da_coluna>'<caso queria por mais colunas ,'<Nome_da_coluna2>',...>].notnull()]
+            #Retirando duplicatas
+            df = df[dfPoor.duplicated() == False]
+            #Retirar colunas que são irrelevantes para a analise
+            df = df.drop(columns=['<Nome_da_coluna>',<caso queria por mais colunas ,'<Nome_da_coluna2>',...>])
+            
+            """)
     st.markdown("""## Clear data""")
     st.dataframe(clear_data())
     
