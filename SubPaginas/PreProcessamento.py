@@ -6,7 +6,7 @@ def Metricas():
     pass
 
 def main():
-    st.title('Metricas')
+    st.title('Pré-processamento de Dados')
     
     st.markdown("""
     ### A Importância do Pré-processamento de Dados
