@@ -1,0 +1,18 @@
+import streamlit as st
+
+
+def Metricas():
+    pass
+
+def main():
+    # Streamlit UI
+    st.title('Matricas')
+    st.markdown("""
+                Comentar sobre as métricas de avaliação de um código.
+                """)
+    
+
+   
+    
+    if st.button('Voltar para a página principal'):
+        st.session_state.page = 'main'
