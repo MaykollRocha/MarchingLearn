@@ -19,11 +19,11 @@ def main():
     1. **Limpeza de dados**:  
     Remoção de valores ausentes, duplicatas e outliers. Esse passo é crucial para evitar que dados incorretos ou distorcidos influenciem negativamente o modelo.  
 
-    2. **Transformação de dados**:  
-    Ajuste dos dados por meio de normalização ou padronização, dependendo do algoritmo escolhido. A transformação garante que os dados estejam na mesma escala ou formato, facilitando a convergência do modelo e o processamento eficiente.
-
-    3. **Engenharia de características (Feature Engineering)**:  
+    2. **Engenharia de características (Feature Engineering)**:  
     Criação ou seleção de características relevantes para melhorar o desempenho do modelo. Isso pode incluir transformar variáveis categóricas em numéricas, combinar variáveis existentes ou criar novas variáveis a partir dos dados disponíveis.
+  
+    3. **Transformação de dados**:  
+    Ajuste dos dados por meio de normalização ou padronização, dependendo do algoritmo escolhido. A transformação garante que os dados estejam na mesma escala ou formato, facilitando a convergência do modelo e o processamento eficiente.
     """)
     
     if st.button('Voltar para a página principal'):
