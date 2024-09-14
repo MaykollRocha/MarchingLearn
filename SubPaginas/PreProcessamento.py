@@ -1,12 +1,26 @@
 
-import numpy as np
+from io import BytesIO
+
+import altair as alt
 import pandas as pd
 import requests
 import streamlit as st
 
 
 def load_data():
-    df = pd.read_csv(requests.get("https://github.com/MaykollRocha/Data_Sets/blob/main/Funcionarios%20(2).xlsx"))
+    # URL do arquivo Excel
+    url = "https://github.com/MaykollRocha/Data_Sets/raw/main/Funcionarios%20(2).xlsx"
+
+    # Baixar o arquivo
+    response = requests.get(url)
+
+    # Verificar se o download foi bem-sucedido
+    if response.status_code == 200:
+        # Ler o arquivo Excel usando BytesIO
+        file_content = BytesIO(response.content)
+        df = pd.read_excel(file_content)
+    else:
+        print(f"Falha ao baixar o arquivo: {response.status_code}")
     return df
 
 
