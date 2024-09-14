@@ -7,15 +7,9 @@ import streamlit as st
 
 
 def load_data():
-    # Baixar o arquivo
-    response = requests.get("https://github.com/MaykollRocha/Data_Sets/raw/main/Funcionarios%20(2).xlsx")
-
-    # Verificar se o download foi bem-sucedido
-    if response.status_code == 200:
-        # Ler o arquivo Excel usando BytesIO
-        file_content = BytesIO(response.content)
-        df = pd.read_excel(file_content, engine='openpyxl')
-        return df
+    # Ler o arquivo CSV usando pandas
+    df = pd.read_csv("data\Funcionarios (2).xlsx")
+    return df
 def main():
     st.title('Pré-processamento de Dados')
     
