@@ -82,7 +82,9 @@ def main():
     st.markdown("""## Clear data""")
     df_clear = clear_data()
     st.dataframe(df_clear)
+    
     st.markdown("""## Tranformando o data frame em valores aprenas numericos""")
+    
     df_num = numeric_dataFrame(df_clear)
     st.dataframe(df_num)
     
