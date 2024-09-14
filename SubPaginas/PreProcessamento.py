@@ -66,7 +66,7 @@ def main():
             df.info() #Tras informações sobre o data frame
             df.shape() #Tras o tamanho do data frame
             """,language='python')
-    st.write(df.info())
+    st.write(df.info)
     st.text(df.shape)
     st.dataframe(df)
     
@@ -83,7 +83,7 @@ def main():
     df = clear_data()
     st.text(df.info())
     st.text(df.shape)
-    st.dataframe(df_clear)
+    st.dataframe(df)
     st.code("""
             #Em casos de sexo muitas vezes eles coloca masculino e feminimo no codigo apresentou varias formar de escrever mas todas como com a mesma letra logo
             #caso tenha uma coluna que prescise trocar masculi ou feminimo
