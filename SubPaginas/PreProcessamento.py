@@ -23,8 +23,6 @@ def clear_data():
     df['sexo'] = df['sexo'].apply(lambda letra: 1 if letra[0].lower() == "m" else 0)
     df['estado_civil'] = df['estado_civil'].apply(lambda letra: 0 if letra[0].lower() == "s" else 1 if letra[0].lower() == "c" else 2 if letra[0].lower() == "d" else 3)
     #Ele categoriza em ordem alfabética categorias = df['coluna'].cat.categories
-    catego =  pd.Categorical(df['cargo'])
-    st.text(catego)
     df['cargo'] = pd.Categorical(df['cargo']).codes
     
     return df
@@ -76,9 +74,12 @@ def main():
              #caso algum dado de alguma coluna numerica esteja none use essa função ela preenche com moda desse gráfico
             df['<Nome_da_coluna>'] = df['<Nome_da_coluna>'].fillna(df['<Nome_da_coluna>'].mode()[0]) # Substituir valores None pela moda
             
+            #Ele categoriza em ordem alfabética categorias = df['<Nome_da_coluna>'].cat.categories
+            df['<Nome_da_coluna>'] = pd.Categorical(df['<Nome_da_coluna>']).codes
             """,language='python')
     st.markdown("""## Clear data""")
-    st.dataframe(clear_data())
+    df_clear = clear_data()
+    st.dataframe(df_clear)
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
