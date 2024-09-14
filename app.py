@@ -1,6 +1,3 @@
-from io import StringIO
-
-import dropbox
 import streamlit as st
 
 from SubPaginas.Metricas import main as Metricas
@@ -32,30 +29,6 @@ def main_page():
     
     if st.button('Metricas'):
         st.session_state.page = 'Metricas'
-        
-
-
-    # Configurar o token de acesso do Dropbox
-    DROPBOX_ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN'
-    dbx = dropbox.Dropbox(DROPBOX_ACCESS_TOKEN)
-
-    # Função para baixar o arquivo do Dropbox
-    def download_file_from_dropbox(path):
-        _, res = dbx.files_download(path)
-        return res.content.decode('utf-8')
-
-    # Interface do Streamlit
-    st.title('Leitor de Arquivo Dropbox')
-
-    # Caminho do arquivo no Dropbox
-    dropbox_path = st.text_input('Digite o caminho do arquivo no Dropbox')
-
-    if dropbox_path:
-        try:
-            file_content = download_file_from_dropbox(dropbox_path)
-            st.text_area('Conteúdo do Arquivo', file_content, height=300)
-        except Exception as e:
-            st.error(f'Ocorreu um erro: {e}')
             
         
     
