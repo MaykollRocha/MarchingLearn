@@ -142,6 +142,7 @@ def main():
                     **Descrição**:{j['Descrição']}.  
                     """)
         st.latex(f"{j['Formula']}")
+        st.code(f"{j['Code']}",language="python")
         i += 1
     
     

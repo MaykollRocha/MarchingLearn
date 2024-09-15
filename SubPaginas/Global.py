@@ -2,18 +2,44 @@ Normalizacos = {
     "Linear":{
         "Descrição":" Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.",
         "Formula":r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}",
+        "Code":"""
+def Nomraliza_Linear(data):
+    for i in data:
+        data[i] = (data[i] - data[i].min())/(data[i].max() - data[i].min())
+    return data
+"""
     },
     "Z-Score Scaling":{
         "Descrição":"Centraliza os dados em torno de uma média de 0 e desvio padrão de 1, sendo útil para dados com distribuições normais.",
         "Formula":r"z = \frac{x - \mu}{\sigma}",
+        "Code":"""
+def Nomraliza_ScoreZ(data):
+    for i in data:
+        data[i] = (data[i] - media(data[i]))/desvio_Padrao(data[i])
+    return data        
+        
+        """
     },
     " Max-Min":{
         "Descrição":"Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.",
         "Formula":r"f(X) = \frac{X - min_X}{max_X - min_X} \times (novo\_max_X - novo\_min_X) + novo\_min_X",
+        "Code":"""
+def Nomraliza_MaxMin(data,nMn =[0,1]):
+    for i in data:
+        data[i] = (data[i] - data[i].min())/(data[i].max() - data[i].min())*(nMn[1]-nMn[0]) + nMn[0]
+    return data
+        """
     },
     "Valor Máximo":{
         "Descrição":"Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.",
         "Formula":r"x' = \frac{x}{|x_{\text{max}}|}",
+        "Code":"""
+def Nomraliza_ValorMax(data):
+    for i in data:
+        data[i] = data[i]/data[i].max()
+    return data
+        
+        """
     },
  
 }
