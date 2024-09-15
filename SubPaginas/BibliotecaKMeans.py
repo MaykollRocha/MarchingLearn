@@ -68,8 +68,8 @@ def plot_Gráfico(matriz, clusters, rotulo, centroides, centroids_init):
     plt.tight_layout()
     return plt
 
-def simples_plot(data,rotulo):
-    plt.title(f"Interação {i+1}")
+def simples_plot(tile,data,rotulo):
+    plt.title(f"{title}")
     plt.scatter(data[:,0], data[:,1], c=rotulo)
     return plt
 
