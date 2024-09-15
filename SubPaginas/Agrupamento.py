@@ -51,7 +51,7 @@ onde:
 
 O cálculo de $( P(n, k) )$ pode ser computacionalmente intensivo para grandes valores de $( n )$ e $( k )$, devido à necessidade de calcular potências e coeficientes binomiais. A complexidade computacional depende de como esses cálculos são realizados, geralmente envolvendo operações exponenciais e fatoriais. No entanto, para valores pequenos de $( n )$ e $( k )$, a fórmula é prática e fornece o número exato de particionamentos distintos possíveis.
                 """)
-    st.code("""
+    st.code(r"""
 # Função para calcular o fatorial de um número
 fat = lambda n: 1 if n == 0 else n * fat(n-1)
 
@@ -59,7 +59,7 @@ fat = lambda n: 1 if n == 0 else n * fat(n-1)
 arj = lambda n, k: fat(n) / (fat(k) * fat(n - k))
 
 def possibilidades(n, k):
-    """
+    \"""
     Calcula o número de possibilidades de k objetos em n posições com repetição,
     usando o princípio de inclusão-exclusão.
 
@@ -69,7 +69,7 @@ def possibilidades(n, k):
 
     Returns:
     - float: Número de possibilidades.
-    """
+    \"""
     return (1 / fat(k)) * sum([((-1) ** (k - j)) * arj(k, j) * (j ** n) for j in range(1, k + 1)])
             """,language="python",line_numbers=True,wrap_lines=True)
     if st.button('Voltar para a página principal'):
