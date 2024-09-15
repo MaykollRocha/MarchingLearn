@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from SubPaginas.Global import Normalizacos
+from SubPaginas.Global import *
 
 
 def obter_info_df(df):
@@ -143,8 +143,12 @@ def main():
                     """)
         st.latex(f"{j['Formula']}")
         st.code(f"{j['Code']}",language="python")
+        match i:
+            case 1: st.dataframe(Nomraliza_Linear(df))
+            case 2: st.dataframe(Nomraliza_ScoreZ(df))
+            case 3: st.dataframe(Nomraliza_MaxMin(df))
+            case 4: st.dataframe(Nomraliza_ValorMax(df))
         i += 1
-    
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
