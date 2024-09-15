@@ -112,18 +112,16 @@ def possibilidades(n, k):
     # Carrega os dados no NumPy
     data = np.loadtxt(data_response.text.splitlines())
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
-    # Criação de dados para o gráfico
-    x = np.linspace(0, 10, 100)
-    y = np.sin(x)
-
-    # Criação da figura
+    
     fig, ax = plt.subplots()
-    ax.plot(x, y)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_title('Gráfico de Seno')
+    scatter = ax.scatter(data[:,0], data[:,1], c=rotulo, cmap='viridis')
+    ax.set_xlabel('Característica 1')
+    ax.set_ylabel('Característica 2')
+    ax.set_title('Gráfico de Dispersão com Rótulos')
 
-    # Exibindo a figura com Streamlit
+    # Adicionar uma barra de cores para mostrar os rótulos
+    cbar = plt.colorbar(scatter)
+    cbar.set_label('Rótulo')
     st.pyplot(fig)
     
     if st.button('Voltar para a página principal'):
