@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 
+from SubPaginas.Global import Normalizacos
+
 
 def obter_info_df(df):
     """
@@ -127,7 +129,18 @@ def main():
     st.write(obter_info_df(df))
     st.dataframe(df)
     
-    st.markdown("""Apartir daqui já temos um data set totalmente numerico sem que pode passar por normalizações de dados para futuro tabalho com eles.  """)
+    st.markdown("""
+                ##Normalização de Dados
+                Isso ajuda a atributos com grande ingluencia não dominar atributos de influencia menores.  
+                Evita atributos de forma tendenciosa em certo algoritmos AM.  
+                Os algoritmos que será apresentados é:
+                """)
+    for k,j in Normalizacos.items():
+        st.markdown(f"""
+                    ### Normalização {k}
+                    **Descrição**:{j['Descrição']}.  
+                    """)
+        st.latex(f"{j["Formulas"]}")
     
     
     if st.button('Voltar para a página principal'):
