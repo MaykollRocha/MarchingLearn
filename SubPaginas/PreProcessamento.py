@@ -139,7 +139,7 @@ def main():
     for k,j in Normalizacos.items():
         st.markdown(f"""
                     ### {i}. Normalização {k}
-                    **Descrição**:
+                    Descrição:
                     {j['Descrição']}
                     """)
         st.code(f"{j['Code']}",language="python")
