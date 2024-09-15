@@ -13,9 +13,9 @@ $$
 
 Onde:
 - $( x_{\text{norm}} )$ é o valor normalizado,
-- $\( x \)$ é o valor original,
-- $\(\text{min}(X)\)$ é o valor mínimo do conjunto de dados $\(X\)$,
-- $\(\text{max}(X)\)$ é o valor máximo do conjunto de dados $\(X\)$.
+- $( x )$ é o valor original,
+- $(\text{min}(X))$ é o valor mínimo do conjunto de dados $\(X\)$,
+- $(\text{max}(X))$ é o valor máximo do conjunto de dados $\(X\)$.
 
 ### Interpretação
 
@@ -81,11 +81,11 @@ f(X) = \frac{X - \text{min}_X}{\text{max}_X - \text{min}_X} \times (\text{novo\_
 $$
 
 Onde:
-- $\( X \)$ é o valor original,
-- $\(\text{min}_X\)$ é o valor mínimo do conjunto de dados original,
-- $\(\text{max}_X\)$ é o valor máximo do conjunto de dados original,
-- $\(\text{novo\_min}_X\)$ é o novo valor mínimo desejado para o intervalo,
-- $\(\text{novo\_max}_X\)$ é o novo valor máximo desejado para o intervalo.
+- $( X )$ é o valor original,
+- $(\text{min}_X)$ é o valor mínimo do conjunto de dados original,
+- $(\text{max}_X)$ é o valor máximo do conjunto de dados original,
+- $(\text{novo\_min}_X)$ é o novo valor mínimo desejado para o intervalo,
+- $(\text{novo\_max}_X)$ é o novo valor máximo desejado para o intervalo.
 
 ### Interpretação
 
@@ -112,9 +112,9 @@ x' = \frac{x}{|x_{\text{max}}|}
 $$
 
 Onde:
-- $\( x' \)$ é o valor normalizado,
-- $\( x \)$ é o valor original,
-- $\( |x_{\text{max}}| \)$ é o valor absoluto do maior valor absoluto no conjunto de dados.
+- $( x' )$ é o valor normalizado,
+- $( x )$ é o valor original,
+- $( |x_{\text{max}}| )$ é o valor absoluto do maior valor absoluto no conjunto de dados.
 
 ### Interpretação
 
