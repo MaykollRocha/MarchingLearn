@@ -10,7 +10,7 @@ from SubPaginas.Global import *
 def simples_plot(title,data,rotulo):
 
     # Define o tamanho da figura com base nas entradas do usuário
-    plt.figimage(figsize=(10, 4))
+    plt.figure(figsize=(10, 4))
     plt.title(f"{title}")
     plt.scatter(data[:,0], data[:,1], c=rotulo)
     return plt
