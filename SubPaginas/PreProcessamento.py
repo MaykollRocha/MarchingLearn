@@ -140,7 +140,7 @@ def main():
                     ### Normalização {k}
                     **Descrição**:{j['Descrição']}.  
                     """)
-        st.latex(f"{j["Formulas"]}")
+        st.latex(f"{j["Formula"]}")
     
     
     if st.button('Voltar para a página principal'):
