@@ -15,9 +15,9 @@ def Nomraliza_Linear(data):
         "Formula":r"z = \frac{x - \mu}{\sigma}",
         "Explicação":"""
         Onde:
-    - \(x\) é o valor individual,
-    - \(\mu\)\ é a média do conjunto de dados,
-    - \(\sigma\)\ é o desvio-padrão.
+    - (x) é o valor individual,
+    - (\mu\) é a média do conjunto de dados,
+    - (\sigma\) é o desvio-padrão.
 
     ### Interpretação dos valores de z-score:
     - **Valores positivos**: Significam que o valor \(x\) está **acima da média**.
