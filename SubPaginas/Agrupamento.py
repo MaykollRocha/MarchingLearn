@@ -26,3 +26,6 @@ def main():
     Em resumo, o agrupamento de dados é uma técnica crucial para entender e explorar dados complexos e volumosos, oferecendo insights valiosos e facilitando a aplicação de modelos de aprendizado de máquina mais eficazes. Sua capacidade de revelar padrões e estruturas ocultas torna-o uma ferramenta indispensável para cientistas de dados e profissionais de machine learning.
                      
                 """)
+    
+    if st.button('Voltar para a página principal'):
+        st.session_state.page = 'main'
