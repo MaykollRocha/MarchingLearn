@@ -1,7 +1,7 @@
 Normalizacos = {
     "Linear":{
         "Descrição":" Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.",
-        "Formula":"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}",
+        "Formula":r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}",
     },
     "Z-Score Scaling":{
         "Descrição":"Valor Máximo",
