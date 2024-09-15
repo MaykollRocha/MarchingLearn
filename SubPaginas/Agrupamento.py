@@ -1,5 +1,7 @@
 import streamlit as st
 
+from SubPaginas.Global import *
+
 
 def main():
     st.markdown("""
@@ -9,7 +11,7 @@ def main():
 
     O objetivo principal do agrupamento é identificar estruturas ou padrões subjacentes nos dados que não são imediatamente evidentes. Em vez de utilizar rótulos pré-definidos para os dados, o agrupamento permite que a estrutura dos dados revele informações significativas, tornando-o uma técnica não supervisionada. Isso significa que o modelo de agrupamento trabalha apenas com as características dos dados para formar os clusters, sem a necessidade de supervisão externa ou rótulos.
 
-    ### Importância do Agrupamento de Dados em Machine Learning
+    ## Importância do Agrupamento de Dados em Machine Learning
 
     1. **Descoberta de Padrões e Estruturas**: O agrupamento é essencial para identificar padrões ou estruturas ocultas nos dados. Por exemplo, em marketing, pode-se usar agrupamento para segmentar clientes com comportamentos semelhantes, permitindo estratégias de marketing mais direcionadas e eficazes.
 
@@ -27,5 +29,28 @@ def main():
                      
                 """)
     
+    st.markdown(r"""
+## Numeros de Formas  
+Para calcular o número de formas distintas de agrupar \( n \) objetos em \( k \) grupos, você está lidando com um problema que envolve a contagem de particionamentos de um conjunto. A fórmula que você forneceu é uma expressão baseada na **fórmula de Bell** para o número de particionamentos, ajustada por um fator para considerar o número de grupos específicos.  
+
+### Fórmula  
+
+A fórmula apresentada é:  
+
+$$
+P(n, k) = \frac{1}{k!} \sum_{j=1}^{k} (-1)^{k-j} \binom{k}{j} j^n 
+$$
+
+onde:
+- $( P(n, k) $) é o número de formas distintas de agrupar $( n $) objetos em $( k $) grupos.
+- $( \binom{k}{j} $) é o coeficiente binomial que representa o número de maneiras de escolher $( j $) grupos entre $( k $).
+- $( j^n $) representa o número de maneiras de distribuir $( n $) objetos em $( j $) grupos.
+- O fator $( \frac{1}{k!} $) corrige para as permutações dos grupos, para garantir que cada agrupamento seja contado apenas uma vez.
+
+### Complexidade Computacional
+
+O cálculo de $( P(n, k) $) pode ser computacionalmente intensivo para grandes valores de $( n $) e $( k $), devido à necessidade de calcular potências e coeficientes binomiais. A complexidade computacional depende de como esses cálculos são realizados, geralmente envolvendo operações exponenciais e fatoriais. No entanto, para valores pequenos de $( n $) e $( k $), a fórmula é prática e fornece o número exato de particionamentos distintos possíveis.
+                """)
+
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'

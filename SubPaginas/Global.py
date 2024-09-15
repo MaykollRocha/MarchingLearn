@@ -1,3 +1,4 @@
+#Data Agrupamento
 Normalizacos = {
     "Linear":{
         "Descrição":r"""
@@ -185,3 +186,4 @@ def Nomraliza_ValorMax(data):
     for i in data:
         data[i] = data[i]/data[i].max()
     return data
+
