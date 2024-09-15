@@ -66,9 +66,12 @@ def plot_Gráfico(matriz, clusters, rotulo, centroides, centroids_init):
     
     # Ajusta o layout dos subplots
     plt.tight_layout()
-    plt.show()
+    return plt
 
-
+def simples_plot(data,rotulo):
+    plt.title(f"Interação {i+1}")
+    plt.scatter(data[:,0], data[:,1], c=rotulo)
+    return plt
 
 # Distância Euclidiana:
 dist_euclidiana = lambda prototipo, objeto: np.sqrt(np.sum((objeto - prototipo) ** 2, axis=1))

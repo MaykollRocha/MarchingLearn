@@ -3,6 +3,7 @@ import numpy as np
 import requests
 import streamlit as st
 
+from SubPaginas.BibliotecaKMeans import *
 from SubPaginas.Global import *
 
 
@@ -113,13 +114,7 @@ def possibilidades(n, k):
     data = np.loadtxt(data_response.text.splitlines())
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
-    fig, ax = plt.subplots()
-    scatter = ax.scatter(data[:,0], data[:,1], c=rotulo)
-    ax.set_xlabel('Característica X')
-    ax.set_ylabel('Característica Y')
-    ax.set_title('Gráfico de Dispersão com Rótulos Tratados Sem Normalização')
-    plt.colorbar(scatter)
-    st.pyplot(fig)
+    st.pyplot(simples_plot(data,rotulo))
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
