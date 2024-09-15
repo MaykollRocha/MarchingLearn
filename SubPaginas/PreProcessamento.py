@@ -141,8 +141,6 @@ def main():
                     ### {i}. Normalização {k}
                     **Descrição**:{j['Descrição']}.  
                     """)
-        st.latex(f"{j['Formula']}")
-        st.markdown(f"{j['Explicação']}")
         st.code(f"{j['Code']}",language="python")
         match i:
             case 1: st.dataframe(Nomraliza_Linear(df))
