@@ -7,6 +7,17 @@ from SubPaginas.BibliotecaKMeans import *
 from SubPaginas.Global import *
 
 
+def simples_plot(title,data,rotulo):
+    # Widgets do Streamlit para entrada do usuário
+    width = st.slider('Largura da figura (polegadas)', min_value=5, max_value=20, value=10)
+    height = st.slider('Altura da figura (polegadas)', min_value=5, max_value=20, value=6)
+
+    # Define o tamanho da figura com base nas entradas do usuário
+    fig, ax = plt.subplots(figsize=(width, height))
+    plt.title(f"{title}")
+    plt.scatter(data[:,0], data[:,1], c=rotulo)
+    return plt
+
 def main():
     st.markdown("""
     # Introdução ao Agrupamento de Dados
