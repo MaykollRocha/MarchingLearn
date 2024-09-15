@@ -1,6 +1,7 @@
 Normalizacos = {
     "Linear":{
-        "Descrição":"""Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.  
+        "Descrição":r"""
+        Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.  
          $r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}$
          """,
         "Code":"""
@@ -50,7 +51,8 @@ def normaliza_scoreZ(data):
         """
     },
     " Max-Min":{
-        "Descrição":"""Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.  
+        "Descrição":r"""
+        Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.  
         $f(X) = \frac{X - min_X}{max_X - min_X} \times (novo\_max_X - novo\_min_X) + novo\_min_X$,
         
         """,
@@ -62,7 +64,8 @@ def Nomraliza_MaxMin(data,nMn =[0,1]):
         """
     },
     "Valor Máximo":{
-        "Descrição":"""Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.  
+        "Descrição":r"""
+        Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.  
         $x' = \frac{x}{|x_{\text{max}}|}$  
     
         """,
