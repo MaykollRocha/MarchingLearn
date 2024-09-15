@@ -9,12 +9,6 @@ st.set_page_config(
     page_icon=":star:",
     layout="wide",
     initial_sidebar_state="expanded",
-    menu_items={
-        'About': "Esta é uma aplicação criada com Streamlit.",
-        'Report a bug': "https://example.com/report",
-        'Get help': "https://example.com/help",
-        'Share': "https://example.com/share"
-    }
 )
 
 def main_page():
