@@ -11,7 +11,7 @@ def Nomraliza_Linear(data):
 """
     },
     "Z-Score Scaling":{
-        "Descrição":"""
+        "Descrição":r"""
     Centraliza os dados em torno de uma média de 0 e desvio padrão de 1, sendo útil para dados com distribuições normais.   
     $$ 
     z = \frac{x - \mu}{\sigma} 
