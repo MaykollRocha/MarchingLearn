@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 def main_page():
-    st.title("Tópicos em Aprendizagem de Máquina - Maykoll Rocha")
+    st.title("Tópicos em Aprendizagem de Máquina - [Maykoll Rocha](https://maykollrochaportifolio.streamlit.app)")
     st.markdown("""
     ### Introdução  
     Neste projeto, apresentarei conteúdos relacionados à disciplina de Aprendizado de Máquina, uma área essencial para a minha futura carreira, que será focada em Análise de Dados. O conteúdo será organizado de forma estruturada, com uma barra lateral para facilitar a navegação, onde você encontrará os projetos que desenvolvi e os códigos que implementei.  
