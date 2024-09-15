@@ -53,7 +53,6 @@ def normaliza_scoreZ(data):
         "Explicação":"""
         
         """,
-        
         "Code":"""
 def Nomraliza_MaxMin(data,nMn =[0,1]):
     for i in data:
@@ -103,7 +102,7 @@ def media(dataset):
         cont += 1
     return round(sum / cont, 2)
 
-def desvio_padrao(data):
+def desvio_Padrao(data):
     med = media(data)
     sum = 0
     for i in data:
