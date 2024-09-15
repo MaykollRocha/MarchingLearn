@@ -1,8 +1,26 @@
 Normalizacos = {
     "Linear":{
         "Descrição":r"""
-        Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.  
-         $x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}$
+A normalização min-max transforma os dados para que todos os valores estejam em um intervalo fixo. É especialmente útil quando você precisa garantir que os dados estejam em uma faixa específica para algoritmos que são sensíveis à escala, como redes neurais ou algoritmos baseados em distância.
+
+### Fórmula
+
+A fórmula para a normalização min-max é:
+
+$
+x_{\text{norm}} = \frac{x - \text{min}(X)}{\text{max}(X) - \text{min}(X)}
+$
+
+Onde:
+- \( x_{\text{norm}} \) é o valor normalizado,
+- \( x \) é o valor original,
+- \(\text{min}(X)\) é o valor mínimo do conjunto de dados \(X\),
+- \(\text{max}(X)\) é o valor máximo do conjunto de dados \(X\).
+
+### Interpretação
+
+- **Valores entre 0 e 1**: Após a normalização, todos os valores estarão entre 0 e 1, onde 0 corresponde ao valor mínimo e 1 corresponde ao valor máximo do conjunto de dados original.
+- **Valores fora da faixa**: Se o valor original estiver fora do intervalo \([\text{min}(X), \text{max}(X)]\), o valor normalizado pode ficar fora do intervalo \([0, 1]\), mas isso geralmente não ocorre se o intervalo é bem definido e os dados estão dentro do intervalo original.
          """,
         "Code":"""
 def Nomraliza_Linear(data):
@@ -52,9 +70,27 @@ def normaliza_scoreZ(data):
     },
     " Max-Min":{
         "Descrição":r"""
-        Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.  
-        $f(X) = \frac{X - min_X}{max_X - min_X} \times (novo\_max_X - novo\_min_X) + novo\_min_X$,
-        
+A normalização Min-Max reescalona os valores dos dados para um intervalo específico. Por padrão, esse intervalo é geralmente \([0, 1]\), mas pode ser definido pelo usuário para qualquer intervalo desejado.
+
+### Fórmula
+
+A fórmula para a normalização Min-Max com um intervalo de saída personalizado é:
+
+$$
+f(X) = \frac{X - \text{min}_X}{\text{max}_X - \text{min}_X} \times (\text{novo\_max}_X - \text{novo\_min}_X) + \text{novo\_min}_X
+$$
+
+Onde:
+- \( X \) é o valor original,
+- \(\text{min}_X\) é o valor mínimo do conjunto de dados original,
+- \(\text{max}_X\) é o valor máximo do conjunto de dados original,
+- \(\text{novo\_min}_X\) é o novo valor mínimo desejado para o intervalo,
+- \(\text{novo\_max}_X\) é o novo valor máximo desejado para o intervalo.
+
+### Interpretação
+
+- **Intervalo Personalizado**: Você pode ajustar \(\text{novo\_min}_X\) e \(\text{novo\_max}_X\) para definir o intervalo de saída desejado. Por exemplo, se você quiser que os valores normalizados estejam entre 10 e 20, defina \(\text{novo\_min}_X = 10\) e \(\text{novo\_max}_X = 20\).
+- **Transformação Linear**: A fórmula aplica uma transformação linear aos dados para ajustá-los ao novo intervalo.
         """,
         "Code":"""
 def Nomraliza_MaxMin(data,nMn =[0,1]):
@@ -65,9 +101,25 @@ def Nomraliza_MaxMin(data,nMn =[0,1]):
     },
     "Valor Máximo":{
         "Descrição":r"""
-        Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.  
-        $x' = \frac{x}{|x_{\text{max}}|}$  
-    
+Essa técnica escala os dados dividindo cada valor pelo valor absoluto máximo do conjunto de dados. Isso garante que o valor máximo seja ajustado para 1 (ou -1, dependendo do sinal) e preserva a relação relativa entre os valores.
+
+### Fórmula
+
+A fórmula para a normalização pelo valor máximo é:
+
+\[
+x' = \frac{x}{|x_{\text{max}}|}
+\]
+
+Onde:
+- \( x' \) é o valor normalizado,
+- \( x \) é o valor original,
+- \( |x_{\text{max}}| \) é o valor absoluto do maior valor absoluto no conjunto de dados.
+
+### Interpretação
+
+- **Escalamento Relativo**: A normalização pelo valor máximo preserva a dispersão dos dados, pois todos os valores são escalados em relação ao valor máximo absoluto do conjunto de dados.
+- **Manutenção da Dispersão**: Essa técnica é útil para dados esparsos e ajuda a manter a estrutura dos dados sem distorcer a dispersão relativa.
         """,
         "Code":"""
 def Nomraliza_ValorMax(data):
