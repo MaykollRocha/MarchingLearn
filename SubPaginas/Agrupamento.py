@@ -31,7 +31,7 @@ def main():
     
     st.markdown(r"""
 ## Numeros de Formas  
-Para calcular o número de formas distintas de agrupar \( n \) objetos em \( k \) grupos, você está lidando com um problema que envolve a contagem de particionamentos de um conjunto. A fórmula que você forneceu é uma expressão baseada na **fórmula de Bell** para o número de particionamentos, ajustada por um fator para considerar o número de grupos específicos.  
+Para calcular o número de formas distintas de agrupar $( n )$ objetos em $( k )$ grupos, você está lidando com um problema que envolve a contagem de particionamentos de um conjunto. A fórmula que você forneceu é uma expressão baseada na **fórmula de Bell** para o número de particionamentos, ajustada por um fator para considerar o número de grupos específicos.  
 
 ### Fórmula  
 
@@ -42,15 +42,35 @@ P(n, k) = \frac{1}{k!} \sum_{j=1}^{k} (-1)^{k-j} \binom{k}{j} j^n
 $$
 
 onde:
-- $( P(n, k) $) é o número de formas distintas de agrupar $( n $) objetos em $( k $) grupos.
-- $( \binom{k}{j} $) é o coeficiente binomial que representa o número de maneiras de escolher $( j $) grupos entre $( k $).
-- $( j^n $) representa o número de maneiras de distribuir $( n $) objetos em $( j $) grupos.
-- O fator $( \frac{1}{k!} $) corrige para as permutações dos grupos, para garantir que cada agrupamento seja contado apenas uma vez.
+- $( P(n, k) )$ é o número de formas distintas de agrupar $( n )$ objetos em $( k )$ grupos.
+- $( \binom{k}{j} )$ é o coeficiente binomial que representa o número de maneiras de escolher $( j )$ grupos entre $( k )$.
+- $( j^n )$ representa o número de maneiras de distribuir $( n )$ objetos em $( j )$ grupos.
+- O fator $( \frac{1}{k!} )$ corrige para as permutações dos grupos, para garantir que cada agrupamento seja contado apenas uma vez.
 
 ### Complexidade Computacional
 
-O cálculo de $( P(n, k) $) pode ser computacionalmente intensivo para grandes valores de $( n $) e $( k $), devido à necessidade de calcular potências e coeficientes binomiais. A complexidade computacional depende de como esses cálculos são realizados, geralmente envolvendo operações exponenciais e fatoriais. No entanto, para valores pequenos de $( n $) e $( k $), a fórmula é prática e fornece o número exato de particionamentos distintos possíveis.
+O cálculo de $( P(n, k) )$ pode ser computacionalmente intensivo para grandes valores de $( n )$ e $( k )$, devido à necessidade de calcular potências e coeficientes binomiais. A complexidade computacional depende de como esses cálculos são realizados, geralmente envolvendo operações exponenciais e fatoriais. No entanto, para valores pequenos de $( n )$ e $( k )$, a fórmula é prática e fornece o número exato de particionamentos distintos possíveis.
                 """)
+    st.code("""
+# Função para calcular o fatorial de um número
+fat = lambda n: 1 if n == 0 else n * fat(n-1)
 
+# Função para calcular o coeficiente binomial (combinação)
+arj = lambda n, k: fat(n) / (fat(k) * fat(n - k))
+
+def possibilidades(n, k):
+    """
+    Calcula o número de possibilidades de k objetos em n posições com repetição,
+    usando o princípio de inclusão-exclusão.
+
+    Parameters:
+    - n (int): Número total de posições.
+    - k (int): Número total de objetos.
+
+    Returns:
+    - float: Número de possibilidades.
+    """
+    return (1 / fat(k)) * sum([((-1) ** (k - j)) * arj(k, j) * (j ** n) for j in range(1, k + 1)])
+            """,language="python",line_numbers=True,wrap_lines=True)
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
