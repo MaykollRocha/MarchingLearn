@@ -140,7 +140,7 @@ def main():
         st.markdown(f"""
                     ### {i}. Normalização {k}  
                     
-                    Descrição:  
+                    {"**Descrição**"}:  
                     
                     {j['Descrição']}
                     """)
