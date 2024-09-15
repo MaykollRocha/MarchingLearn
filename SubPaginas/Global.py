@@ -2,7 +2,7 @@ Normalizacos = {
     "Linear":{
         "Descrição":r"""
         Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.  
-         $r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}$
+         $x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}$
          """,
         "Code":"""
 def Nomraliza_Linear(data):

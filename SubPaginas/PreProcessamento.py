@@ -140,7 +140,7 @@ def main():
         st.markdown(f"""
                     ### {i}. Normalização {k}
                     **Descrição**:
-                    {j['Descrição']}.  
+                    {j['Descrição']}
                     """)
         st.code(f"{j['Code']}",language="python")
         match i:
