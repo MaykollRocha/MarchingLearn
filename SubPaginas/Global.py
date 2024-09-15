@@ -12,7 +12,7 @@ x_{\text{norm}} = \frac{x - \text{min}(X)}{\text{max}(X) - \text{min}(X)}
 $$
 
 Onde:
-- $\( x_{\text{norm}} \)$ é o valor normalizado,
+- $( x_{\text{norm}} )$ é o valor normalizado,
 - $\( x \)$ é o valor original,
 - $\(\text{min}(X)\)$ é o valor mínimo do conjunto de dados $\(X\)$,
 - $\(\text{max}(X)\)$ é o valor máximo do conjunto de dados $\(X\)$.
