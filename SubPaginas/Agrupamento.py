@@ -123,6 +123,12 @@ def possibilidades(n, k):
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
     st.pyplot(simples_plot("Base de Dados Tratada",data,rotulo))
+    st.markdown(f'''
+                No acaso apresentado acima temos a 4 protótipos que seria o numeros de grupos destindos teremos uma possibilidade de agrupar {possibilidades(data.shape[0],len(np.unique(rotulo)))}.
+                ''')
+    
+    
+    
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
