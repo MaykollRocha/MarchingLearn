@@ -15,38 +15,58 @@ Normalizacos = {
         "Descrição":"Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.",
         "Formula":r"x' = \frac{x}{|x_{\text{max}}|}",
     },
-    "Robust Scaling":{
-        "Descrição":"Subtrai a mediana e divide pelo intervalo interquartil (IQR), sendo robusto a outliers e útil para dados que não seguem distribuições normais.",
-        "Formula":r"x' = \frac{x - \text{mediana}(x)}{IQR(x)}",
-    },
-    "Decimal Scaling":{
-        "Descrição":"Move os dados para uma escala onde o valor absoluto máximo está entre [0, 1]. É útil quando os dados variam em múltiplas ordens de grandeza.",
-        "Formula":r"x' = \frac{x}{10^j}",
-    },
-    "L2 Normalization":{
-        "Descrição":"Escala os vetores de forma que sua norma 𝐿2 seja 1. Muito usada em métodos de aprendizado de máquina baseados em distância, como SVM e k-NN.",
-        "Formula":r"x' = \frac{x}{\sum |x_i|}",
-    },
-    "L1 Normalization":{
-        "Descrição":"Normaliza os dados de forma que a soma dos valores absolutos de cada ponto seja igual a 1. Útil quando se lida com dados esparsos.",
-        "Formula":r"x' = \frac{x}{\sum |x_i|}",
-    },
-    "Logarithmic Transformation":{
-        "Descrição":"Usada para lidar com dados que seguem uma distribuição exponencial, tornando-os mais normais. É sensível a valores próximos de zero, então frequentemente é adicionada uma constante.",
-        "Formula":r"x' = \log(x + 1)",
-    },
-    "Sigmoid Normalization":{
-        "Descrição":"Mapeia os valores em um intervalo entre 0 e 1. É amplamente utilizada em redes neurais.",
-        "Formula":r"x' = \frac{1}{1 + e^{-x}}",
-    },
-    "Tanh Estimator Scaling ":{
-        "Descrição":"Uma transformação robusta que mapeia os dados para o intervalo [0, 1], baseada na função tangente hiperbólica, útil em redes neurais profundas.",
-        "Formula":r"x' = 0.5 \times \left(1 + \tanh\left(0.01 \times (x - \mu)\right)\right)",
-    },
-    "Power Transformations":{
-        "Descrição":"Generalização da Box-Cox para dados que contêm valores negativos. Essas transformações estabilizam a variância e tornam os dados mais gaussianos.",
-        "Formula":r"x' = \frac{x^{\lambda} - 1}{\lambda}",
-    },
-    
-    
+ 
 }
+
+#Funções Auxiliares
+def media(daset):
+    sum = 0
+    cont = 0
+    for i in daset:
+        sum += i
+        cont += 1
+    return round(sum/cont,2)
+
+def moda(daset):
+    mod ={}
+    for i in daset:
+        if i in mod:
+            mod[i] += 1
+        else:
+            mod[i] = 1
+    moda = max(mod,key=mod.get)
+    return moda
+
+def mediana(data):
+    sorted_data = sorted(data)
+    return  (sorted_data[len(data)//2 - 1] + sorted_data[len(data)//2]) / 2 if len(data) % 2 == 0 else sorted_data[len(data)//2]
+    
+
+def desvio_Padrao(data):
+    med = media(data)
+    sum = 0
+    for i in data:
+        sum += (i - med)**2
+    return (sum/len(data))**0.5
+
+#Normalizações 
+
+def Nomraliza_Linear(data):
+    for i in data:
+        data[i] = (data[i] - data[i].min())/(data[i].max() - data[i].min())
+    return data
+
+def Nomraliza_ScoreZ(data):
+    for i in data:
+        data[i] = (data[i] - media(data[i]))/desvio_Padrao(data[i])
+    return data
+
+def Nomraliza_MaxMin(data,nMn =[0,1]):
+    for i in data:
+        data[i] = (data[i] - data[i].min())/(data[i].max() - data[i].min())*(nMn[1]-nMn[0]) + nMn[0]
+    return data
+
+def Nomraliza_ValorMax(data):
+    for i in data:
+        data[i] = data[i]/data[i].max()
+    return data
