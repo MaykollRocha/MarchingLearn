@@ -69,6 +69,7 @@ def plot_Gráfico(matriz, clusters, rotulo, centroides, centroids_init):
     return plt
 
 def simples_plot(title,data,rotulo):
+    plt.figure(figsize=(10, 6))
     plt.title(f"{title}")
     plt.scatter(data[:,0], data[:,1], c=rotulo)
     return plt
