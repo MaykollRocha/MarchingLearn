@@ -122,7 +122,7 @@ def possibilidades(n, k):
     data = np.loadtxt(data_response.text.splitlines())
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
-    st.plotly_chart(simples_plot("Base de Dados Tratada",data,rotulo), theme="streamlit")
+    st.pyplot(simples_plot("Base de Dados Tratada",data,rotulo), theme="streamlit")
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
