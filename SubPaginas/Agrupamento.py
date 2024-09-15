@@ -112,8 +112,16 @@ def possibilidades(n, k):
     # Carrega os dados no NumPy
     data = np.loadtxt(data_response.text.splitlines())
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
-    plt.scatter(data[:,0], data[:,1], c=rotulo)
-    plt.show()
+    fig, ax = plt.subplots()
+    scatter = ax.scatter(data[:,0], data[:,1], c=rotulo, cmap='viridis')
+    ax.set_xlabel('Característica 1')
+    ax.set_ylabel('Característica 2')
+    ax.set_title('Gráfico de Dispersão com Rótulos')
+
+    # Adicionar uma barra de cores para mostrar os rótulos
+    cbar = plt.colorbar(scatter)
+    cbar.set_label('Rótulo')
+    st.pyplot(fig)
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
