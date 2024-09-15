@@ -4,6 +4,18 @@ from SubPaginas.Agrupamento import main as Agrupamento
 from SubPaginas.Metricas import main as Metricas
 from SubPaginas.PreProcessamento import main as PreProcess
 
+st.set_page_config(
+    page_title="Minha Aplicação",
+    page_icon=":star:",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': "Esta é uma aplicação criada com Streamlit.",
+        'Report a bug': "https://example.com/report",
+        'Get help': "https://example.com/help",
+        'Share': "https://example.com/share"
+    }
+)
 
 def main_page():
     st.title("Tópicos em Aprendizagem de Máquina - Maykoll Rocha")
@@ -52,7 +64,3 @@ match st.session_state.page:
     case "preProcessamento":PreProcess()
     case _:
         main_page()
-
-if __name__ == "__main__":
-    st.set_page_config(page_title="Streamlit Gallery by Okld", page_icon="🎈", layout="wide")
-    main_page()
