@@ -135,12 +135,14 @@ def main():
                 Evita atributos de forma tendenciosa em certo algoritmos AM.  
                 Os algoritmos que será apresentados é:
                 """)
+    i = 1
     for k,j in Normalizacos.items():
         st.markdown(f"""
-                    ### Normalização {k}
+                    ### {i}. Normalização {k}
                     **Descrição**:{j['Descrição']}.  
                     """)
         st.latex(f"{j['Formula']}")
+        i += 1
     
     
     if st.button('Voltar para a página principal'):

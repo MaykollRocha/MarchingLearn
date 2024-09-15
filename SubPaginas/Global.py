@@ -4,7 +4,7 @@ Normalizacos = {
         "Formula":r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}",
     },
     "Z-Score Scaling":{
-        "Descrição":"Valor Máximo",
+        "Descrição":"Centraliza os dados em torno de uma média de 0 e desvio padrão de 1, sendo útil para dados com distribuições normais.",
         "Formula":r"z = \frac{x - \mu}{\sigma}",
     },
     " Max-Min":{
