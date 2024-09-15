@@ -5,7 +5,7 @@ from SubPaginas.PreProcessamento import main as PreProcess
 
 
 def main_page():
-    st.title("Maykoll Rocha - Tópicos em Aprendizagem de Máquina")
+    st.title("Maykoll- Tópicos em Aprendizagem de Máquina")
     st.markdown("""
     ### Introdução  
     Neste projeto, apresentarei conteúdos relacionados à disciplina de Aprendizado de Máquina, uma área essencial para a minha futura carreira, que será focada em Análise de Dados. O conteúdo será organizado de forma estruturada, com uma barra lateral para facilitar a navegação, onde você encontrará os projetos que desenvolvi e os códigos que implementei.  
