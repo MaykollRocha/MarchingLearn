@@ -5,7 +5,7 @@ Normalizacos = {
     },
     "Z-Score Scaling":{
         "Descrição":"Valor Máximo",
-        "Formula":"z = \frac{x - \mu}{\sigma}",
+        "Formula":r"z = \frac{x - \mu}{\sigma}",
     },
     " Max-Min":{
         "Descrição":"Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.",
