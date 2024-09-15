@@ -13,10 +13,25 @@ def Nomraliza_Linear(data):
         "Descrição":"Centraliza os dados em torno de uma média de 0 e desvio padrão de 1, sendo útil para dados com distribuições normais.",
         "Formula":r"z = \frac{x - \mu}{\sigma}",
         "Code":"""
-def Nomraliza_ScoreZ(data):
+def media(dataset):
+    sum = 0
+    cont = 0
+    for i in dataset:
+        sum += i
+        cont += 1
+    return round(sum / cont, 2)
+
+def desvio_padrao(data):
+    med = media(data)
+    sum = 0
     for i in data:
-        data[i] = (data[i] - media(data[i]))/desvio_Padrao(data[i])
-    return data        
+        sum += (i - med) ** 2
+    return (sum / len(data)) ** 0.5
+
+def normaliza_scoreZ(data):
+    med = media(data)
+    desvio = desvio_padrao(data)
+    return [(x - med) / desvio for x in data]     
         
         """
     },
@@ -44,14 +59,6 @@ def Nomraliza_ValorMax(data):
  
 }
 
-#Funções Auxiliares
-def media(daset):
-    sum = 0
-    cont = 0
-    for i in daset:
-        sum += i
-        cont += 1
-    return round(sum/cont,2)
 
 def moda(daset):
     mod ={}
@@ -68,12 +75,21 @@ def mediana(data):
     return  (sorted_data[len(data)//2 - 1] + sorted_data[len(data)//2]) / 2 if len(data) % 2 == 0 else sorted_data[len(data)//2]
     
 
-def desvio_Padrao(data):
+def media(dataset):
+    sum = 0
+    cont = 0
+    for i in dataset:
+        sum += i
+        cont += 1
+    return round(sum / cont, 2)
+
+def desvio_padrao(data):
     med = media(data)
     sum = 0
     for i in data:
-        sum += (i - med)**2
-    return (sum/len(data))**0.5
+        sum += (i - med) ** 2
+    return (sum / len(data)) ** 0.5
+
 
 #Normalizações 
 
