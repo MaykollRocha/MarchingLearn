@@ -14,13 +14,13 @@ $$
 Onde:
 - $( x_{\text{norm}} )$ é o valor normalizado,
 - $( x )$ é o valor original,
-- $(\text{min}(X))$ é o valor mínimo do conjunto de dados $\(X\)$,
-- $(\text{max}(X))$ é o valor máximo do conjunto de dados $\(X\)$.
+- $(\text{min}(X))$ é o valor mínimo do conjunto de dados $(X)$,
+- $(\text{max}(X))$ é o valor máximo do conjunto de dados $(X)$.
 
 ### Interpretação
 
 - **Valores entre 0 e 1**: Após a normalização, todos os valores estarão entre 0 e 1, onde 0 corresponde ao valor mínimo e 1 corresponde ao valor máximo do conjunto de dados original.
-- **Valores fora da faixa**: Se o valor original estiver fora do intervalo \([\text{min}(X), \text{max}(X)]\), o valor normalizado pode ficar fora do intervalo \([0, 1]\), mas isso geralmente não ocorre se o intervalo é bem definido e os dados estão dentro do intervalo original.
+- **Valores fora da faixa**: Se o valor original estiver fora do intervalo $([\text{min}(X), \text{max}(X)])$, o valor normalizado pode ficar fora do intervalo $([0, 1])$, mas isso geralmente não ocorre se o intervalo é bem definido e os dados estão dentro do intervalo original.
          """,
         "Code":"""
 def Nomraliza_Linear(data):
@@ -41,8 +41,8 @@ def Nomraliza_Linear(data):
     - $(\sigma)$ é o desvio-padrão.
 
     ### Interpretação dos valores de z-score:
-    - **Valores positivos**: Significam que o valor \(x\) está **acima da média**.
-    - **Valores negativos**: Significam que o valor \(x\) está **abaixo da média**.
+    - **Valores positivos**: Significam que o valor (x) está **acima da média**.
+    - **Valores negativos**: Significam que o valor (x) está **abaixo da média**.
     - **z = 0**: Significa que o valor está **igual à média**.
         """,
         "Code":"""
@@ -70,7 +70,7 @@ def normaliza_scoreZ(data):
     },
     " Max-Min":{
         "Descrição":r"""
-A normalização Min-Max reescalona os valores dos dados para um intervalo específico. Por padrão, esse intervalo é geralmente \([0, 1]\), mas pode ser definido pelo usuário para qualquer intervalo desejado.
+A normalização Min-Max reescalona os valores dos dados para um intervalo específico. Por padrão, esse intervalo é geralmente $([0, 1])$, mas pode ser definido pelo usuário para qualquer intervalo desejado.
 
 ### Fórmula
 
@@ -89,7 +89,7 @@ Onde:
 
 ### Interpretação
 
-- **Intervalo Personalizado**: Você pode ajustar \(\text{novo\_min}_X\) e \(\text{novo\_max}_X\) para definir o intervalo de saída desejado. Por exemplo, se você quiser que os valores normalizados estejam entre 10 e 20, defina \(\text{novo\_min}_X = 10\) e \(\text{novo\_max}_X = 20\).
+- **Intervalo Personalizado**: Você pode ajustar $(\text{novo\_min}_X)$ e $(\text{novo\_max}_X)$ para definir o intervalo de saída desejado. Por exemplo, se você quiser que os valores normalizados estejam entre 10 e 20, defina $(\text{novo\_min}_X = 10)$ e $(\text{novo\_max}_X = 20)$.
 - **Transformação Linear**: A fórmula aplica uma transformação linear aos dados para ajustá-los ao novo intervalo.
         """,
         "Code":"""
