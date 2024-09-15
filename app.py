@@ -1,5 +1,6 @@
 import streamlit as st
 
+from SubPaginas.Agrupamento import main as Agrupamento
 from SubPaginas.Metricas import main as Metricas
 from SubPaginas.PreProcessamento import main as PreProcess
 
@@ -21,9 +22,21 @@ def main_page():
     if st.button('Pré Processamento'):
         st.session_state.page = 'preProcessamento'
     
-    if st.button('Metricas'):
-        st.session_state.page = 'Metricas'
-            
+    st.markdown("""
+                ### Agrupamento de Dados
+
+O agrupamento de dados é uma técnica de aprendizado não supervisionado que organiza um conjunto de dados em grupos ou clusters, onde os elementos dentro de cada grupo são mais semelhantes entre si do que com os de outros grupos. Essa abordagem é crucial para descobrir padrões e estruturas ocultas nos dados, permitindo uma análise mais aprofundada sem a necessidade de rótulos predefinidos.
+
+Em machine learning, o agrupamento ajuda na segmentação de mercado, redução de dimensionalidade e detecção de anomalias. Ele também serve como um passo preliminar para outras técnicas, facilitando a personalização de recomendações e a exploração inicial dos dados. Ao revelar informações não evidentes e simplificar conjuntos de dados complexos, o agrupamento torna-se uma ferramenta essencial para obter insights valiosos e aprimorar a performance dos modelos de aprendizado de máquina.
+                                
+                """)
+    
+    if st.button("Agrupamento"):
+        st.session_state.page = 'Agrupamento'
+    
+    
+    
+    
         
     
 # Defina o estado da página se não estiver definido
@@ -35,7 +48,7 @@ if 'page' not in st.session_state:
 # Controle de navegação
 match st.session_state.page:
     case 'main': main_page()
-    case 'Metricas': Metricas()
+    case 'Agrupamento': Agrupamento()
     case "preProcessamento":PreProcess()
     case _:
         main_page()
