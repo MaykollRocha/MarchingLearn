@@ -8,12 +8,9 @@ from SubPaginas.Global import *
 
 
 def simples_plot(title,data,rotulo):
-    # Widgets do Streamlit para entrada do usuário
-    width = st.slider('Largura da figura (polegadas)', min_value=5, max_value=20, value=10)
-    height = st.slider('Altura da figura (polegadas)', min_value=5, max_value=20, value=6)
 
     # Define o tamanho da figura com base nas entradas do usuário
-    fig, ax = plt.subplots(figsize=(width, height))
+    plt.figimage(figsize=(10, 4))
     plt.title(f"{title}")
     plt.scatter(data[:,0], data[:,1], c=rotulo)
     return plt
@@ -125,7 +122,7 @@ def possibilidades(n, k):
     data = np.loadtxt(data_response.text.splitlines())
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
-    st.pyplot(simples_plot("Base de Dados Tratada",data,rotulo),)
+    st.st.plotly_chart(simples_plot("Base de Dados Tratada",data,rotulo), theme="streamlit")
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
