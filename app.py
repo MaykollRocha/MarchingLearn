@@ -6,7 +6,7 @@ from SubPaginas.PreProcessamento import main as PreProcess
 
 st.set_page_config(
     page_title="Minha Aplicação",
-    page_icon=":star:",
+    page_icon=":brain:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
