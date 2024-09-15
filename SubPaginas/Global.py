@@ -2,6 +2,7 @@ Normalizacos = {
     "Linear":{
         "Descrição":" Transforma os dados para um intervalo específico, geralmente [0, 1], preservando a distribuição original. Muito útil quando você sabe os valores máximos e mínimos de antemão.",
         "Formula":r"x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}",
+        "Explicação":"""""",
         "Code":"""
 def Nomraliza_Linear(data):
     for i in data:
@@ -12,6 +13,17 @@ def Nomraliza_Linear(data):
     "Z-Score Scaling":{
         "Descrição":"Centraliza os dados em torno de uma média de 0 e desvio padrão de 1, sendo útil para dados com distribuições normais.",
         "Formula":r"z = \frac{x - \mu}{\sigma}",
+        "Explicação":"""
+        Onde:
+    - \(x\) é o valor individual,
+    - \(\mu\) é a média do conjunto de dados,
+    - \(\sigma\) é o desvio-padrão.
+
+    ### Interpretação dos valores de z-score:
+    - **Valores positivos**: Significam que o valor \(x\) está **acima da média**.
+    - **Valores negativos**: Significam que o valor \(x\) está **abaixo da média**.
+    - **z = 0**: Significa que o valor está **igual à média**.
+        """,
         "Code":"""
 def media(dataset):
     sum = 0
@@ -38,6 +50,10 @@ def normaliza_scoreZ(data):
     " Max-Min":{
         "Descrição":"Cria os valores de acordo com um dadado espaço numerico do seu agrado por padrão é [0,1] porem pode ser um que seja definido pelo usuário.",
         "Formula":r"f(X) = \frac{X - min_X}{max_X - min_X} \times (novo\_max_X - novo\_min_X) + novo\_min_X",
+        "Explicação":"""
+        
+        """,
+        
         "Code":"""
 def Nomraliza_MaxMin(data,nMn =[0,1]):
     for i in data:
@@ -48,6 +64,10 @@ def Nomraliza_MaxMin(data,nMn =[0,1]):
     "Valor Máximo":{
         "Descrição":"Escala os dados pelo valor absoluto máximo, mantendo a dispersão e lidando bem com dados esparsos.",
         "Formula":r"x' = \frac{x}{|x_{\text{max}}|}",
+        "Explicação":"""
+
+    
+        """,
         "Code":"""
 def Nomraliza_ValorMax(data):
     for i in data:
