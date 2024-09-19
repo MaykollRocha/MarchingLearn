@@ -195,8 +195,6 @@ O processo de agrupamento pode ser dividido em cinco etapas principais:
 5. **Avaliação da Saída**:  
    Nesta última etapa, é realizada a avaliação da qualidade dos grupos formados. Critérios como coesão interna dos grupos e separação entre os grupos são usados para medir a eficácia do agrupamento.
 
----
-
 ### Desafios no Agrupamento
 
 O processo de agrupamento enfrenta diversos desafios que podem dificultar a obtenção de bons resultados:
@@ -208,6 +206,41 @@ O processo de agrupamento enfrenta diversos desafios que podem dificultar a obte
                 
                 ''')
     
+    st.markdown("""
+
+### Métodos Principais de Agrupamento de Dados
+
+O agrupamento de dados pode ser realizado por diferentes abordagens. Cada método possui características específicas que o tornam mais adequado para determinados tipos de dados e objetivos. Os três principais métodos são:
+
+1. **Agrupamento Particional**:  
+   Este método divide os dados em um número pré-definido de grupos. O objetivo é organizar os objetos de forma que cada um pertença exatamente a um grupo, maximizando a similaridade entre os objetos dentro do grupo e minimizando a similaridade com objetos fora do grupo. Um exemplo clássico desse método é o algoritmo **K-means**, onde se define o número de clusters \( k \) antes do agrupamento.
+
+2. **Agrupamento Hierárquico**:  
+   Este método constrói uma hierarquia de grupos, geralmente na forma de uma árvore, chamada dendrograma. O agrupamento hierárquico pode ser **aglomerativo** (bottom-up), onde os objetos começam como clusters individuais e são gradualmente combinados, ou **divisivo** (top-down), onde um único cluster é gradualmente dividido em subgrupos. Este método é útil quando se deseja uma visão mais detalhada da estrutura dos dados, revelando relações em diferentes níveis de granularidade.
+
+3. **Agrupamento Baseado em Densidade**:  
+   Este método forma clusters com base nas áreas de maior densidade de pontos em um espaço de dados. Objetos em regiões de alta densidade são agrupados, enquanto regiões de baixa densidade são consideradas ruído. Um exemplo popular deste tipo de algoritmo é o **DBSCAN (Density-Based Spatial Clustering of Applications with Noise)**, que é capaz de identificar grupos de formas arbitrárias e detectar outliers.
+
+                
+                """)
+    st.markdown('''
+### Agrupamento Particional
+
+No agrupamento particional, um conjunto de objetos é dividido em \( k \) grupos ou partições. A alocação de cada objeto a um grupo pode ser feita de diferentes maneiras, resultando em dois tipos principais de agrupamento particional:
+
+#### a) Hard (Tradicional, Crisp) ou Nebuloso (Difuso)
+
+- **Hard (Tradicional, Crisp)**: Neste tipo de agrupamento, cada objeto pertence exclusivamente a um único grupo. A divisão dos dados é clara e sem sobreposição, ou seja, os grupos são bem definidos, e não há ambiguidade sobre qual grupo cada objeto pertence.
+  
+- **Nebuloso (Difuso)**: No agrupamento nebuloso, cada objeto pode pertencer a mais de um grupo, com um grau de pertinência para cada grupo. Isso significa que a separação entre os grupos não é rígida, permitindo sobreposição entre eles, e cada objeto tem uma probabilidade de pertencer a vários grupos.
+
+#### b) Determinístico ou Estocástico
+
+- **Determinístico**: Algoritmos determinísticos, como o **K-means tradicional**, produzem sempre o mesmo resultado quando executados com os mesmos parâmetros e a mesma inicialização. Eles seguem um comportamento previsível, resultando na mesma partição e no mesmo número de iterações a cada execução.
+  
+- **Estocástico**: Algoritmos estocásticos, por outro lado, podem gerar diferentes resultados em execuções distintas, mesmo para o mesmo conjunto de dados. Isso ocorre porque eles dependem de fatores como a inicialização aleatória dos parâmetros ou a ordem de apresentação dos objetos. Um exemplo de algoritmo estocástico é o **K-means++**, que utiliza uma inicialização aleatória mais inteligente para evitar mínimos locais.
+
+                ''')
     
     
     
