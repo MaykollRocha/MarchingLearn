@@ -64,11 +64,11 @@ O agrupamento organiza objetos em grupos com base em uma medida de similaridade 
 
 Para isso, utiliza-se uma medida de similaridade, sendo a **distância Euclidiana** uma das mais populares. A fórmula dessa distância, que mede a diferença entre dois pontos em um espaço multidimensional, é:
 
-\[
+$$
 d(x_a, x_b) = \sqrt{\sum_{i=1}^{d}(x_a^{i} - x_b^{i})^2}
-\]
+$$
 
-Onde \( x_a \) e \( x_b \) são dois objetos, e \( d \) é o número de dimensões. Essa fórmula calcula a distância entre os objetos para determinar se eles pertencem ao mesmo grupo.
+Onde $( x_a )$ e $( x_b )$ são dois objetos, e $( d )$ é o número de dimensões. Essa fórmula calcula a distância entre os objetos para determinar se eles pertencem ao mesmo grupo.
 
 ---
 
