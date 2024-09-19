@@ -242,6 +242,36 @@ No agrupamento particional, um conjunto de objetos é dividido em \( k \) grupos
 
                 ''')
     
+    st.markdown(r'''
+
+### O Método K-Means
+
+O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utilizados e recebe como entrada o parâmetro \( k \), que define o número de grupos a serem identificados em uma base de dados. Ele funciona da seguinte maneira:
+
+1. **Inicialização dos centroides**:  
+   São selecionados \( k \) centroides, que podem ser escolhidos aleatoriamente ou de forma determinada.
+
+2. **Atribuição dos objetos aos grupos**:  
+   Cada objeto da base de dados é avaliado e associado ao grupo mais similar, com base em uma medida de distância (geralmente a distância Euclidiana) entre o objeto e os centroides.
+
+3. **Recalculo dos centroides**:  
+   Um novo centroide é computado para cada grupo, calculando a média dos objetos que foram associados a ele no passo anterior.
+
+4. **Critério de parada**:  
+   O processo é repetido até que um critério de convergência seja atingido, como quando os centroides não mudam significativamente de uma iteração para a outra ou quando o número máximo de iterações é alcançado.
+
+### Comentários sobre o Método K-Means
+
+#### Pontos Fortes:
+- **Eficiência**: O algoritmo tem complexidade $( O(tkn) )$, onde $( n )$ é o número de objetos, $( k )$ é o número de clusters, e $( t )$ é o número de iterações. Isso o torna eficiente mesmo para bases de dados grandes.
+- **Simplicidade**: É fácil de entender, implementar e possui rápida convergência.
+
+#### Pontos Fracos:
+- **Ótimo local**: O K-Means pode frequentemente ficar preso em um ótimo local, não explorando completamente o espaço de soluções.
+- **Sensível à inicialização**: A escolha inicial dos centroides pode afetar significativamente o resultado final, podendo levar a soluções subótimas.
+- **Necessidade de definir $( k )$ previamente**: O número de clusters precisa ser especificado a priori, o que pode ser difícil sem conhecimento prévio dos dados.
+- **Incapacidade de lidar com outliers**: O K-Means não é robusto contra outliers, pois eles podem distorcer os grupos e os centroides calculados.  
+                ''')
     
     
     
