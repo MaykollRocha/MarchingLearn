@@ -166,13 +166,13 @@ def k_means(matriz, k, max_iter=10):
         plt.scatter(matriz[:, 0], matriz[:, 1], c=clusters)
         plt.scatter(centroides[:, 0], centroides[:, 1], color='red', marker='*', s=100, alpha=1)
         plt.pause(0.1)  # Adiciona um pequeno atraso para visualização
-
+        st.pyplot(plt)
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):
             break
 
         centroides = novos_centroides
     
-    st.pyplot(plt)
+    
     return centroides, clusters, copy_of_init_centroids
 
