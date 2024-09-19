@@ -172,6 +172,6 @@ def k_means(matriz, k, max_iter=10):
     
     fig, ax = plt.subplots(num, 1, figsize=(10, 4))
     for i in range(num):
-        ax[i] = plots[i]
+        ax[i][0] = plots[i]
     st.ploty(plt)
     return centroides, clusters, copy_of_init_centroids
