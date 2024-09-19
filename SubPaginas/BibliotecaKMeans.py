@@ -173,6 +173,6 @@ def k_means(matriz, k, max_iter=10):
 
         centroides = novos_centroides
     
-    plt.show()  # Exibe a última figura
+    st.pyplot(plt)
     return centroides, clusters, copy_of_init_centroids
 
