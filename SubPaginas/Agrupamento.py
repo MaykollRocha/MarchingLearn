@@ -271,7 +271,7 @@ O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utili
     
     
     centroides, clusters, copy_of_init_centroids = k_means(data,4)
-    
+    st.pyplot(plot_Gráfico(data,clusters,rotulo,centroides,copy_of_init_centroids))
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'

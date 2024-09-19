@@ -156,6 +156,7 @@ def k_means(matriz, k, max_iter=10):
         clusters = atribuir_clusters(matriz, centroides)
         # Calcula os novos centroides
         novos_centroides = atualizar_centroides(matriz, clusters, k)
+        
         plt.title(f"Interação {i+1}")
         plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
         plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
