@@ -133,6 +133,11 @@ def atualizar_centroides(matriz, clusters, k):
             centroides[i] = np.mean(pontos_cluster, axis=0)
     return centroides
 
+import matplotlib.pyplot as plt
+import numpy as np
+import streamlit as st
+
+
 def k_means(matriz, k, max_iter=10):
     """
     Executa o algoritmo k-means para particionar a matriz em k clusters.
@@ -141,7 +146,6 @@ def k_means(matriz, k, max_iter=10):
     - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
     - k (int): Número de clusters.
     - max_iter (int, opcional): Número máximo de iterações do algoritmo (padrão é 10).
-    - plot (bool, opcional): Se True, plota a evolução dos clusters e centroides (padrão é False).
 
     Returns:
     - centroides (numpy.ndarray): Matriz final de centroides após o algoritmo.
@@ -152,15 +156,18 @@ def k_means(matriz, k, max_iter=10):
     centroides = int_centroides(matriz, k)
     copy_of_init_centroids = centroides.copy()
     plots = []
+    
     for i in range(max_iter):
         # Atribui pontos aos clusters mais próximos
         clusters = atribuir_clusters(matriz, centroides)
         # Calcula os novos centroides
         novos_centroides = atualizar_centroides(matriz, clusters, k)
-        
+
+        # Cria o gráfico da iteração atual
+        plt.figure()
         plt.title(f"Interação {i+1}")
-        plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
-        plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
+        plt.scatter(matriz[:, 0], matriz[:, 1], c=clusters)
+        plt.scatter(centroides[:, 0], centroides[:, 1], color='red', marker='*', s=100, alpha=1)
         plots.append(plt)
 
         # Verifica se os centroides mudaram
@@ -168,21 +175,20 @@ def k_means(matriz, k, max_iter=10):
             break
 
         centroides = novos_centroides
-    
-    # Supondo que 'plots' seja uma lista de funções de plotagem ou dados a serem plotados
-    num = len(plots)
 
     # Configura a figura com subplots verticais
-    fig, axes = plt.subplots(num, 1, figsize=(10, 4 * num))  # Ajusta o tamanho para acomodar mais plots
+    num = len(plots)
+    fig, axes = plt.subplots(num, 1, figsize=(10, 4 * num))
 
-    # Verifica se num > 1 para subplots múltiplos ou único
     if num == 1:
-        axes = [axes]  # Converte para lista se houver apenas um subplot
+        axes = [axes]  # Garante que axes seja uma lista
 
-    # Itera sobre os plots e os eixos
     for i in range(num):
-        plots[i](axes[i])  # Chama a função de plotagem sobre o eixo correspondente
+        plt.figure(plots[i].number)  # Usa o número da figura correspondente
+        plots[i].gca().set_axis(axes[i])  # Define o eixo da plotagem
 
     # Mostra o gráfico no Streamlit
     st.pyplot(fig)
+    
     return centroides, clusters, copy_of_init_centroids
+
