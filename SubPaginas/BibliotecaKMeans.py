@@ -133,7 +133,7 @@ def atualizar_centroides(matriz, clusters, k):
             centroides[i] = np.mean(pontos_cluster, axis=0)
     return centroides
 
-def k_means(matriz, k, max_iter=10, plot=False):
+def k_means(matriz, k, max_iter=10):
     """
     Executa o algoritmo k-means para particionar a matriz em k clusters.
 
@@ -156,12 +156,10 @@ def k_means(matriz, k, max_iter=10, plot=False):
         clusters = atribuir_clusters(matriz, centroides)
         # Calcula os novos centroides
         novos_centroides = atualizar_centroides(matriz, clusters, k)
-        # Print do cluster
-        if plot:
-            plt.title(f"Interação {i+1}")
-            plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
-            plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
-            st.pyplot(plt)
+        plt.title(f"Interação {i+1}")
+        plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
+        plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
+        st.pyplot(plt)
 
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):
