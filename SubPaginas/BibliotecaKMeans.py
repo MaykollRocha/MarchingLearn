@@ -133,6 +133,10 @@ def atualizar_centroides(matriz, clusters, k):
             centroides[i] = np.mean(pontos_cluster, axis=0)
     return centroides
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 def k_means(matriz, k, max_iter=10):
     """
     Executa o algoritmo k-means para particionar a matriz em k clusters.
@@ -141,7 +145,6 @@ def k_means(matriz, k, max_iter=10):
     - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
     - k (int): Número de clusters.
     - max_iter (int, opcional): Número máximo de iterações do algoritmo (padrão é 10).
-    - plot (bool, opcional): Se True, plota a evolução dos clusters e centroides (padrão é False).
 
     Returns:
     - centroides (numpy.ndarray): Matriz final de centroides após o algoritmo.
@@ -151,20 +154,25 @@ def k_means(matriz, k, max_iter=10):
     # Inicializa os centroides
     centroides = int_centroides(matriz, k)
     copy_of_init_centroids = centroides.copy()
+    
     for i in range(max_iter):
         # Atribui pontos aos clusters mais próximos
         clusters = atribuir_clusters(matriz, centroides)
         # Calcula os novos centroides
         novos_centroides = atualizar_centroides(matriz, clusters, k)
         
+        plt.clf()  # Limpa a figura antes de desenhar nova iteração
         plt.title(f"Interação {i+1}")
-        plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
-        plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
-        st.pyplot(plt)
+        plt.scatter(matriz[:, 0], matriz[:, 1], c=clusters)
+        plt.scatter(centroides[:, 0], centroides[:, 1], color='red', marker='*', s=100, alpha=1)
+        plt.pause(0.1)  # Adiciona um pequeno atraso para visualização
 
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):
             break
 
         centroides = novos_centroides
+    
+    plt.show()  # Exibe a última figura
     return centroides, clusters, copy_of_init_centroids
+
