@@ -41,9 +41,6 @@ def main():
                      
                 """)
     st.markdown(r"""
-                Aqui está a versão melhorada do texto para o seu portfólio:
-
----
 
 ### O que é Agrupamento?
 
@@ -69,10 +66,6 @@ d(x_a, x_b) = \sqrt{\sum_{i=1}^{d}(x_a^{i} - x_b^{i})^2}
 $$
 
 Onde $( x_a )$ e $( x_b )$ são dois objetos, e $( d )$ é o número de dimensões. Essa fórmula calcula a distância entre os objetos para determinar se eles pertencem ao mesmo grupo.
-
----
-
-Assim, você oferece uma descrição mais detalhada e com uma linguagem adequada para seu portfólio de ciência de dados.
                 """)
     st.markdown(r"""
 ## Numeros de Formas  
