@@ -168,10 +168,21 @@ def k_means(matriz, k, max_iter=10):
             break
 
         centroides = novos_centroides
-    num = len(plots)
     
-    fig, ax = plt.subplots(num, 1, figsize=(10, 4))
+    # Supondo que 'plots' seja uma lista de funções de plotagem ou dados a serem plotados
+    num = len(plots)
+
+    # Configura a figura com subplots verticais
+    fig, axes = plt.subplots(num, 1, figsize=(10, 4 * num))  # Ajusta o tamanho para acomodar mais plots
+
+    # Verifica se num > 1 para subplots múltiplos ou único
+    if num == 1:
+        axes = [axes]  # Converte para lista se houver apenas um subplot
+
+    # Itera sobre os plots e os eixos
     for i in range(num):
-        ax[i][0] = plots[i]
-    st.ploty(plt)
+        plots[i](axes[i])  # Chama a função de plotagem sobre o eixo correspondente
+
+    # Mostra o gráfico no Streamlit
+    st.pyplot(fig)
     return centroides, clusters, copy_of_init_centroids
