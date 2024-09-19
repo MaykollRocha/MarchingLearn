@@ -19,6 +19,9 @@ def main():
     st.markdown("""
     # Introdução ao Agrupamento de Dados
 
+    
+    ### O que é Agrupamento?
+    
     O agrupamento de dados, ou clustering, é uma técnica fundamental em aprendizado de máquina e análise de dados que busca organizar um conjunto de dados em grupos ou clusters, de modo que os elementos dentro de cada grupo sejam mais semelhantes entre si do que com os elementos de outros grupos. Essa técnica é amplamente utilizada em diversos contextos, desde segmentação de mercado até análise de padrões em grandes volumes de dados.
 
     O objetivo principal do agrupamento é identificar estruturas ou padrões subjacentes nos dados que não são imediatamente evidentes. Em vez de utilizar rótulos pré-definidos para os dados, o agrupamento permite que a estrutura dos dados revele informações significativas, tornando-o uma técnica não supervisionada. Isso significa que o modelo de agrupamento trabalha apenas com as características dos dados para formar os clusters, sem a necessidade de supervisão externa ou rótulos.
@@ -41,11 +44,6 @@ def main():
                      
                 """)
     st.markdown(r"""
-
-### O que é Agrupamento?
-
-Agrupamento, ou "clustering", é o processo de organizar itens com características semelhantes em categorias ou grupos. Ele identifica similaridades, como forma, tamanho, cor, e outros atributos, com o objetivo de estruturar grandes volumes de dados, facilitando sua compreensão. Intuitivamente, objetos pertencentes a um mesmo grupo são mais semelhantes entre si e mais diferentes daqueles de outros grupos.
-
 ### Aplicações do Agrupamento
 
 O agrupamento tem inúmeras aplicações práticas, incluindo:
