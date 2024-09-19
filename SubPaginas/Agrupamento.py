@@ -40,7 +40,40 @@ def main():
     Em resumo, o agrupamento de dados é uma técnica crucial para entender e explorar dados complexos e volumosos, oferecendo insights valiosos e facilitando a aplicação de modelos de aprendizado de máquina mais eficazes. Sua capacidade de revelar padrões e estruturas ocultas torna-o uma ferramenta indispensável para cientistas de dados e profissionais de machine learning.
                      
                 """)
-    
+    st.markdown(r"""
+                Aqui está a versão melhorada do texto para o seu portfólio:
+
+---
+
+### O que é Agrupamento?
+
+Agrupamento, ou "clustering", é o processo de organizar itens com características semelhantes em categorias ou grupos. Ele identifica similaridades, como forma, tamanho, cor, e outros atributos, com o objetivo de estruturar grandes volumes de dados, facilitando sua compreensão. Intuitivamente, objetos pertencentes a um mesmo grupo são mais semelhantes entre si e mais diferentes daqueles de outros grupos.
+
+### Aplicações do Agrupamento
+
+O agrupamento tem inúmeras aplicações práticas, incluindo:
+
+- **Medicina**: Identificação de categorias de diagnósticos e padrões de doenças.
+- **Marketing**: Segmentação de clientes, produtos e serviços, ajudando a criar estratégias mais eficazes.
+- **Arqueologia**: Identificação de relações entre diferentes tipos de artefatos, auxiliando na compreensão de civilizações antigas.
+- **Finanças**: Detecção de perfis de clientes fraudadores ou transações fraudulentas, essencial para a segurança financeira.
+
+### Como Funciona o Agrupamento?
+
+O agrupamento organiza objetos em grupos com base em uma medida de similaridade ou dissimilaridade entre eles. Objetos de um mesmo grupo compartilham características comuns, enquanto objetos de grupos diferentes são distintos. Ao contrário dos processos de classificação, o agrupamento lida com dados não rotulados, ou seja, a classe à qual cada item pertence não é conhecida de antemão.
+
+Para isso, utiliza-se uma medida de similaridade, sendo a **distância Euclidiana** uma das mais populares. A fórmula dessa distância, que mede a diferença entre dois pontos em um espaço multidimensional, é:
+
+\[
+d(x_a, x_b) = \sqrt{\sum_{i=1}^{d}(x_a^{i} - x_b^{i})^2}
+\]
+
+Onde \( x_a \) e \( x_b \) são dois objetos, e \( d \) é o número de dimensões. Essa fórmula calcula a distância entre os objetos para determinar se eles pertencem ao mesmo grupo.
+
+---
+
+Assim, você oferece uma descrição mais detalhada e com uma linguagem adequada para seu portfólio de ciência de dados.
+                """)
     st.markdown(r"""
 ## Numeros de Formas  
 Para calcular o número de formas distintas de agrupar $( n )$ objetos em $( k )$ grupos, você está lidando com um problema que envolve a contagem de particionamentos de um conjunto. A fórmula que você forneceu é uma expressão baseada na **fórmula de Bell** para o número de particionamentos, ajustada por um fator para considerar o número de grupos específicos.  
@@ -126,6 +159,7 @@ def possibilidades(n, k):
     st.markdown(f'''
                 No acaso apresentado acima temos a 4 protótipos que seria o numeros de grupos destindos teremos uma possibilidade de agrupar {possibilidades(data.shape[0],len(np.unique(rotulo)))}.
                 ''')
+    
     
     
     
