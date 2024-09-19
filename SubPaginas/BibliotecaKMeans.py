@@ -151,6 +151,7 @@ def k_means(matriz, k, max_iter=10):
     # Inicializa os centroides
     centroides = int_centroides(matriz, k)
     copy_of_init_centroids = centroides.copy()
+    plots = []
     for i in range(max_iter):
         # Atribui pontos aos clusters mais próximos
         clusters = atribuir_clusters(matriz, centroides)
@@ -160,11 +161,17 @@ def k_means(matriz, k, max_iter=10):
         plt.title(f"Interação {i+1}")
         plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
         plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
-        st.pyplot(plt)
+        plots.append(plt)
 
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):
             break
 
         centroides = novos_centroides
+    num = len(plots)
+    
+    fig, ax = plt.subplots(num, 1, figsize=(10, 4))
+    for i in range(num):
+        ax[i] = plots[i]
+    st.ploty(plt)
     return centroides, clusters, copy_of_init_centroids
