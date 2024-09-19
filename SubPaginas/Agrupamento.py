@@ -270,12 +270,15 @@ O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utili
                 ''')
     
     st.markdown('''
-                ## Testando o K-means
-                
-                Anteriormente foi nos aparesentado a base de dados generiaca abaixo tera essa base testando o k-means e mostrando o plot sempre que apartar R na página ela vai rodar novamento o plot.
-                O código que ela usa estará logo abaixo do plot final
-                Muitas vezes aparecerá bem ruim e o maximo de interação é 10 por rodada até que o centroide encontre o melhor caminho
-                No github tambem tem mais sobre esses códigos
+## Testando o K-Means
+
+Neste exercício, utilizaremos uma base de dados genérica para testar o algoritmo K-means. O objetivo é visualizar como o algoritmo agrupa os dados e como os centroides se ajustam durante o processo.
+
+Sempre que você pressionar a tecla "R" na página, o plot será atualizado, mostrando a nova execução do K-means. O código utilizado para essa implementação será apresentado logo abaixo do gráfico final.
+
+É importante observar que, em algumas execuções, o agrupamento pode não ser satisfatório. O algoritmo terá um máximo de 10 interações por rodada para tentar encontrar o melhor posicionamento dos centroides.
+
+Para mais detalhes sobre o código e a implementação, você pode acessar o repositório no GitHub.
                 ''')
     
     centroides, clusters, copy_of_init_centroids = k_means(data,4)
