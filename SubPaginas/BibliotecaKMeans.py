@@ -164,11 +164,11 @@ def k_means(matriz, k, max_iter=10):
         novos_centroides = atualizar_centroides(matriz, clusters, k)
 
         # Cria o gráfico da iteração atual
-        plt.figure()
-        plt.title(f"Interação {i+1}")
+        plt.figure()  # Cria uma nova figura
+        plt.title(f"Interação {i + 1}")
         plt.scatter(matriz[:, 0], matriz[:, 1], c=clusters)
         plt.scatter(centroides[:, 0], centroides[:, 1], color='red', marker='*', s=100, alpha=1)
-        plots.append(plt)
+        plots.append(plt)  # Armazena a referência à figura
 
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):
@@ -184,11 +184,13 @@ def k_means(matriz, k, max_iter=10):
         axes = [axes]  # Garante que axes seja uma lista
 
     for i in range(num):
-        plt.figure(plots[i].number)  # Usa o número da figura correspondente
-        plots[i].gca().set_axis(axes[i])  # Define o eixo da plotagem
+        # Plota no eixo correspondente
+        plots[i].axes[0].set_axes(axes[i])
+        plots[i].draw()  # Desenha a figura no eixo correto
 
     # Mostra o gráfico no Streamlit
     st.pyplot(fig)
     
     return centroides, clusters, copy_of_init_centroids
+
 
