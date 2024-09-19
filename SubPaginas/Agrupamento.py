@@ -65,6 +65,13 @@ $$
 
 Onde $( x_a )$ e $( x_b )$ são dois objetos, e $( d )$ é o número de dimensões. Essa fórmula calcula a distância entre os objetos para determinar se eles pertencem ao mesmo grupo.
                 """)
+    
+    st.code(r'''
+            # Distância Euclidiana:
+dist_euclidiana = lambda prototipo, objeto: np.sqrt(np.sum((objeto - prototipo) ** 2, axis=1))
+
+            ''',language="python",line_numbers=True,wrap_lines=True)
+    
     st.markdown(r"""
 ## Numeros de Formas  
 Para calcular o número de formas distintas de agrupar $( n )$ objetos em $( k )$ grupos, você está lidando com um problema que envolve a contagem de particionamentos de um conjunto. A fórmula que você forneceu é uma expressão baseada na **fórmula de Bell** para o número de particionamentos, ajustada por um fator para considerar o número de grupos específicos.  
