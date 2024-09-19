@@ -154,8 +154,57 @@ def possibilidades(n, k):
     rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
     st.pyplot(simples_plot("Base de Dados Tratada",data,rotulo))
-    st.markdown(f'''
+    st.markdown(r'''
                 No acaso apresentado acima temos a 4 protótipos que seria o numeros de grupos destindos teremos uma possibilidade de agrupar {possibilidades(data.shape[0],len(np.unique(rotulo)))}.
+
+### Como Escolher a Medida de Similaridade?
+
+A escolha da medida de similaridade é crucial no processo de agrupamento, pois ela afeta diretamente a qualidade dos grupos formados. A medida a ser utilizada depende das características da base de dados e da forma dos grupos naturais que você espera identificar, além da dimensão do espaço de soluções.
+
+- **Distância Euclidiana**, por exemplo, é adequada para identificar grupos com formato esférico. No entanto, essas características dos dados geralmente não são conhecidas previamente, o que torna a escolha da medida um desafio.
+
+A seleção da medida de similaridade adequada pode fazer uma grande diferença no desempenho do algoritmo de agrupamento e na qualidade dos grupos formados. Portanto, deve-se considerar com cuidado as características da base de dados ao escolher a métrica de similaridade.
+
+### A Tarefa de Agrupamento e Seus Desafios
+
+O processo de agrupamento pode ser dividido em cinco etapas principais:
+
+1. **Representação dos Dados**:  
+   Nesta etapa, as características dos dados são representadas de forma manipulável pelo algoritmo de agrupamento. Normalmente, isso é feito por meio de uma matriz, onde cada linha representa um objeto (registro da base de dados) e cada coluna corresponde a uma dimensão (atributo) desse objeto.
+
+   $$
+   \begin{matrix}
+   x_{11} & \cdots & x_{1D} \\
+   \vdots & \cdots & \vdots \\
+   x_{N1} & \cdots & x_{ND}
+   \end{matrix}
+   $$
+
+   Aqui, $( N )$ representa o número de objetos, e $( D )$, o número de dimensões (atributos) que descrevem cada objeto.
+
+2. **Definição de uma Medida de Proximidade ou Distância**:  
+   Para determinar a semelhança ou a distância entre os objetos, utiliza-se uma função apropriada. A **distância Euclidiana** é uma das mais comuns, especialmente para dados que se ajustam a grupos esféricos.
+
+3. **Agrupamento**:  
+   Esta é a fase de busca pelos grupos de objetos dentro da base de dados. O objetivo é alocar objetos semelhantes no mesmo grupo, separando-os de objetos em grupos diferentes.
+
+4. **Abstração dos Dados**:  
+   Após o agrupamento, esta etapa envolve a descrição dos grupos formados. A abstração pode fornecer informações valiosas sobre as características comuns entre os objetos de um mesmo grupo.
+
+5. **Avaliação da Saída**:  
+   Nesta última etapa, é realizada a avaliação da qualidade dos grupos formados. Critérios como coesão interna dos grupos e separação entre os grupos são usados para medir a eficácia do agrupamento.
+
+---
+
+### Desafios no Agrupamento
+
+O processo de agrupamento enfrenta diversos desafios que podem dificultar a obtenção de bons resultados:
+
+- **Determinação Automática do Número de Grupos**: Definir o número ideal de grupos pode ser complexo, especialmente quando não há conhecimento prévio sobre os dados.
+- **Multidimensionalidade**: Trabalhar com um grande número de dimensões pode tornar a tarefa mais difícil, uma vez que a complexidade do espaço de soluções aumenta.
+- **Grupos Não Separáveis Linearmente**: Em muitos casos, os grupos não podem ser separados por uma linha reta ou plano, o que exige técnicas mais sofisticadas para identificá-los.
+- **Escolha da Medida de Similaridade**: Selecionar uma medida de similaridade apropriada é crucial, pois isso impacta diretamente a qualidade do agrupamento.
+                
                 ''')
     
     
