@@ -269,9 +269,113 @@ O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utili
 - **Incapacidade de lidar com outliers**: O K-Means não é robusto contra outliers, pois eles podem distorcer os grupos e os centroides calculados.  
                 ''')
     
+    st.markdown('''
+                ## Testando o K-means
+                
+                Anteriormente foi nos aparesentado a base de dados generiaca abaixo tera essa base testando o k-means e mostrando o plot sempre que apartar R na página ela vai rodar novamento o plot.
+                O código que ela usa estará logo abaixo do plot final
+                Muitas vezes aparecerá bem ruim e o maximo de interação é 10 por rodada até que o centroide encontre o melhor caminho
+                No github tambem tem mais sobre esses códigos
+                ''')
     
     centroides, clusters, copy_of_init_centroids = k_means(data,4)
     st.pyplot(plot_Gráfico(data,clusters,rotulo,centroides,copy_of_init_centroids))
+    st.title("Codigos: ")
+    st.code('''
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Distância Euclidiana:
+dist_euclidiana = lambda prototipo, objeto: np.sqrt(np.sum((objeto - prototipo) ** 2, axis=1))
+
+def int_centroides(matriz, k):
+    """
+    Inicializa os centroides selecionando aleatoriamente k pontos da matriz.
+
+    Parameters:
+    - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
+    - k (int): Número de centroides a serem inicializados.
+
+    Returns:
+    - centroides (numpy.ndarray): Matriz de centroides inicializados.
+    """
+    indices = np.random.choice(matriz.shape[0], k, replace=False)
+    centroides = matriz[indices]
+    return centroides
+
+def atribuir_clusters(matriz, centroides):
+    """
+    Atribui cada ponto da matriz ao cluster mais próximo com base na distância euclidiana dos centroides.
+
+    Parameters:
+    - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
+    - centroides (numpy.ndarray): Matriz de centroides.
+
+    Returns:
+    - clusters (numpy.ndarray): Array onde cada elemento representa o índice do cluster atribuído a cada ponto.
+    """
+    distancias = np.zeros((matriz.shape[0], len(centroides)))
+    for i, centroide in enumerate(centroides):
+        distancias[:, i] = dist_euclidiana(centroide, matriz)
+    clusters = np.argmin(distancias, axis=1)
+    return clusters
+
+def atualizar_centroides(matriz, clusters, k):
+    """
+    Atualiza os centroides calculando a média dos pontos em cada cluster.
+
+    Parameters:
+    - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
+    - clusters (numpy.ndarray): Array com os índices dos clusters para cada ponto.
+    - k (int): Número de clusters.
+
+    Returns:
+    - centroides (numpy.ndarray): Matriz atualizada de centroides.
+    """
+    centroides = np.zeros((k, matriz.shape[1]))
+    for i in range(k):
+        pontos_cluster = matriz[clusters == i]
+        if len(pontos_cluster) > 0:
+            centroides[i] = np.mean(pontos_cluster, axis=0)
+    return centroides
+
+def k_means(matriz, k, max_iter=10, plot=False):
+    """
+    Executa o algoritmo k-means para particionar a matriz em k clusters.
+
+    Parameters:
+    - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
+    - k (int): Número de clusters.
+    - max_iter (int, opcional): Número máximo de iterações do algoritmo (padrão é 10).
+    - plot (bool, opcional): Se True, plota a evolução dos clusters e centroides (padrão é False).
+
+    Returns:
+    - centroides (numpy.ndarray): Matriz final de centroides após o algoritmo.
+    - clusters (numpy.ndarray): Array com os índices dos clusters para cada ponto.
+    - copy_of_init_centroids (numpy.ndarray): Cópia dos centroides iniciais.
+    """
+    # Inicializa os centroides
+    centroides = int_centroides(matriz, k)
+    copy_of_init_centroids = centroides.copy()
+    for i in range(max_iter):
+        # Atribui pontos aos clusters mais próximos
+        clusters = atribuir_clusters(matriz, centroides)
+        # Calcula os novos centroides
+        novos_centroides = atualizar_centroides(matriz, clusters, k)
+        # Print do cluster
+        if plot:
+            plt.title(f"Interação {i+1}")
+            plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
+            plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
+            plt.show()
+
+        # Verifica se os centroides mudaram
+        if np.all(centroides == novos_centroides):
+            break
+
+        centroides = novos_centroides
+    return centroides, clusters, copy_of_init_centroids         
+            ''')
     
     if st.button('Voltar para a página principal'):
         st.session_state.page = 'main'
