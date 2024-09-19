@@ -268,7 +268,7 @@ O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utili
 - **Necessidade de definir $( k )$ previamente**: O número de clusters precisa ser especificado a priori, o que pode ser difícil sem conhecimento prévio dos dados.
 - **Incapacidade de lidar com outliers**: O K-Means não é robusto contra outliers, pois eles podem distorcer os grupos e os centroides calculados.  
                 ''')
-    centroides, clusters, copy_of_init_centroids = k_means(data,rotulo,True)
+    centroides, clusters, copy_of_init_centroids = k_means(data,4,True)
     
     
     if st.button('Voltar para a página principal'):
