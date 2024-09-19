@@ -1,5 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import streamlit as st
+
+
+def simples_plot(title,data,rotulo):
+
+    # Define o tamanho da figura com base nas entradas do usuário
+    plt.figure(figsize=(10, 4))
+    plt.title(f"{title}")
+    plt.scatter(data[:,0], data[:,1], c=rotulo)
+    return plt
 
 # Função para calcular o fatorial de um número
 fat = lambda n: 1 if n == 0 else n * fat(n-1)
@@ -151,7 +161,7 @@ def k_means(matriz, k, max_iter=10, plot=False):
             plt.title(f"Interação {i+1}")
             plt.scatter(matriz[:,0], matriz[:,1], c=clusters)
             plt.scatter(centroides[:,0], centroides[:,1], color='red', marker='*', s=100, alpha=1)
-            plt.show()
+            st.pyplot(plt)
 
         # Verifica se os centroides mudaram
         if np.all(centroides == novos_centroides):

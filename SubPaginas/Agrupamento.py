@@ -7,15 +7,18 @@ from SubPaginas.BibliotecaKMeans import *
 from SubPaginas.Global import *
 
 
-def simples_plot(title,data,rotulo):
-
-    # Define o tamanho da figura com base nas entradas do usuário
-    plt.figure(figsize=(10, 4))
-    plt.title(f"{title}")
-    plt.scatter(data[:,0], data[:,1], c=rotulo)
-    return plt
-
 def main():
+    
+    # Baixa os dados dos arquivos
+    data_response = requests.get('https://raw.githubusercontent.com/MaykollRocha/Data_Sets/main/data.txt')
+    rotulo_response = requests.get('https://raw.githubusercontent.com/MaykollRocha/Data_Sets/main/rotulos.txt')
+
+    # Carrega os dados no NumPy
+    data = np.loadtxt(data_response.text.splitlines())
+    rotulo = np.loadtxt(rotulo_response.text.splitlines())
+    
+    
+    
     st.markdown("""
     # Introdução ao Agrupamento de Dados
 
@@ -145,13 +148,6 @@ def possibilidades(n, k):
             Esses grupos naturais representam padrões subjacentes nos dados e são úteis para a análise e interpretação dos dados, ajudando a identificar estruturas e relações significativas.    
                 
                 ''')
-    # Baixa os dados dos arquivos
-    data_response = requests.get('https://raw.githubusercontent.com/MaykollRocha/Data_Sets/main/data.txt')
-    rotulo_response = requests.get('https://raw.githubusercontent.com/MaykollRocha/Data_Sets/main/rotulos.txt')
-
-    # Carrega os dados no NumPy
-    data = np.loadtxt(data_response.text.splitlines())
-    rotulo = np.loadtxt(rotulo_response.text.splitlines())
     
     st.pyplot(simples_plot("Base de Dados Tratada",data,rotulo))
     st.text(f"No acaso apresentado acima temos a 4 protótipos que seria o numeros de grupos destindos teremos uma possibilidade de agrupar {possibilidades(data.shape[0],len(np.unique(rotulo)))}.")
@@ -272,7 +268,7 @@ O algoritmo **K-Means** é um dos métodos de agrupamento particional mais utili
 - **Necessidade de definir $( k )$ previamente**: O número de clusters precisa ser especificado a priori, o que pode ser difícil sem conhecimento prévio dos dados.
 - **Incapacidade de lidar com outliers**: O K-Means não é robusto contra outliers, pois eles podem distorcer os grupos e os centroides calculados.  
                 ''')
-    
+    centroides, clusters, copy_of_init_centroids = k_means(data,rotulo)
     
     
     if st.button('Voltar para a página principal'):
