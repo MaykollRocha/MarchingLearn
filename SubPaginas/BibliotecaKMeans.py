@@ -52,8 +52,9 @@ def entropy(matriz, rotulo):
 
 def plot_Gráfico(matriz, clusters, rotulo, centroides, centroids_init):
     """
-    Plota gráficos para visualização dos dados, mostrando a distribuição dos clusters e centroides.
-
+    Plota dois gráficos lado a lado: um com os centroides iniciais e outro com os centroides finais.
+    Os centroides finais terão a mesma cor dos pontos dos clusters que eles representam e uma borda ao redor.
+    
     Parameters:
     - matriz (numpy.ndarray): Matriz de dados onde cada linha é um ponto.
     - clusters (numpy.ndarray): Array com os índices dos clusters para cada ponto.
@@ -61,20 +62,33 @@ def plot_Gráfico(matriz, clusters, rotulo, centroides, centroids_init):
     - centroides (numpy.ndarray): Matriz final dos centroides.
     - centroids_init (numpy.ndarray): Matriz dos centroides iniciais.
     """
-    # Cria uma figura com dois subplots
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+    # Define as cores para os clusters usando a nova forma de obter colormap
+    colors = plt.colormaps['viridis'](np.linspace(0, 1, len(np.unique(clusters))))
+
+    # Cria uma figura com dois subplots lado a lado
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
     
-    # Subplot para os dados originais
-    ax1.set_title("Original")
-    ax1.scatter(matriz[:, 0], matriz[:, 1], c=rotulo, cmap='viridis')
-    ax1.scatter(centroids_init[:, 0], centroids_init[:, 1], color='red', marker='*', s=100, alpha=1)
+    # Primeiro gráfico: distribuição com centroides iniciais
+    ax1.set_title("Distribuição com Centroides Iniciais")
+    scatter1 = ax1.scatter(matriz[:, 0], matriz[:, 1], c=rotulo, cmap='viridis')
+    ax1.scatter(centroids_init[:, 0], centroids_init[:, 1], color='red', marker='*', s=200, edgecolors='black', linewidths=2, label='Centroides Iniciais', alpha=0.8)
+    ax1.set_xlabel("Eixo X")
+    ax1.set_ylabel("Eixo Y")
+    ax1.legend()
+
+    # Segundo gráfico: distribuição com centroides finais
+    ax2.set_title("Distribuição com Centroides Finais")
+    scatter2 = ax2.scatter(matriz[:, 0], matriz[:, 1], c=clusters, cmap='viridis')
     
-    # Subplot para a iteração final
-    ax2.set_title("Final Iteration")
-    ax2.scatter(matriz[:, 0], matriz[:, 1], c=clusters, cmap='viridis')
-    ax2.scatter(centroides[:, 0], centroides[:, 1], color='red', marker='*', s=100, alpha=1)
+    # Protótipos finais, com a mesma cor do cluster correspondente e borda colorida
+    for i, (x, y) in enumerate(centroides):
+        ax2.scatter(x, y, color=colors[i], marker='X', s=200, edgecolors='black', linewidths=2, label=f'Centroides Finais Cluster {i}')
     
-    # Ajusta o layout dos subplots
+    ax2.set_xlabel("Eixo X")
+    ax2.set_ylabel("Eixo Y")
+    ax2.legend()
+
+    # Ajusta o layout e mostra os gráficos
     plt.tight_layout()
     return plt
 
